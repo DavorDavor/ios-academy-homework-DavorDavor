@@ -1,11 +1,12 @@
 //
 //  ViewController.swift
-//  TVShows
+//  Test
 //
-//  Created by Infinum  on 08.07.2021..
+//  Created by Infinum  on 12.07.2021..
 //
 
 import UIKit
+import SVProgressHUD
 
 class ViewController: UIViewController {
 

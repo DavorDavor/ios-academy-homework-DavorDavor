@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  TVShows
+//  Test
 //
-//  Created by Infinum  on 08.07.2021..
+//  Created by Infinum  on 12.07.2021..
 //
 
 import UIKit
@@ -11,15 +11,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
-    var window: UIWindow?
-    
+
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         return true
     }
-
-    
-
-
 }
 
