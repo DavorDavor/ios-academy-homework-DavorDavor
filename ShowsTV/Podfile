@@ -7,5 +7,6 @@ target 'ShowsTV' do
 
   # Pods for ShowsTV
   pod "SVProgressHUD"
+  pod "Alamofire"
 
 end
