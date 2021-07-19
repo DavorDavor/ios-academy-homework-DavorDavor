@@ -8,6 +8,21 @@
 import UIKit
 import Alamofire
 
+struct User: Decodable {
+    let id: String
+    let mail: String
+    let imageUrl: String?
+    
+    enum CodingKeys : String, CodingKey {
+        case id
+        case mail = "email"
+        case imageUrl = "image_url"
+    }
+}
+struct UserResponse: Decodable {
+    let user: User
+}
+
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -25,8 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             .request("https://tv-shows.infinum.academy/users", method: .post, parameters: params, encoder: JSONParameterEncoder.default)
             .validate()
             .responseJSON(completionHandler: { response in
-                result.result
-                
+                switch response.result {
+            case .success(let userResponse):
+         print("email: 
+         
+         }
             })*/
         return true
     }

@@ -19,8 +19,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="TV Shows" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="23" translatesAutoresizingMaskIntoConstraints="NO" id="mV1-lT-nUd">
                                 <rect key="frame" x="129" y="156" width="157" height="69"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <color key="textColor" red="0.043981708586215973" green="0.023120595142245293" blue="0.06485641747713089" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="42"/>
+                                <color key="textColor" red="0.092523075640201569" green="0.53947395086288452" blue="0.17454415559768677" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bHj-gH-6UH">
@@ -49,7 +49,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="IBAction:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bru-OT-CK6"/>
+                                    <action selector="buttonClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bru-OT-CK6"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -57,8 +57,8 @@
                         <color key="backgroundColor" red="0.92742496728897095" green="0.86828726530075073" blue="0.64361661672592163" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="IBOutlet" destination="mV1-lT-nUd" id="1B4-CL-kd7"/>
                         <outlet property="activityIndicator" destination="pkp-Ck-rp0" id="BHR-zb-BNc"/>
+                        <outlet property="titleLabel" destination="mV1-lT-nUd" id="1B4-CL-kd7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
