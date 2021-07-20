@@ -12,7 +12,7 @@
         <!--LoginViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="@login" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" userLabel="LoginViewController" customClass="LoginViewController" customModule="ShowsTV" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LoginViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" userLabel="LoginViewController" customClass="LoginViewController" customModule="ShowsTV" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -81,7 +81,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="eTc-ER-Ox7" kind="push" id="4hm-4o-nb3"/>
+                                            <action selector="registerOnClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="fBo-vv-kTG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-dC-QhI" userLabel="Login">
@@ -97,7 +97,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <segue destination="eTc-ER-Ox7" kind="push" id="4vb-OB-GGj"/>
+                                            <action selector="loginOnClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dvh-YL-cJv"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gai-Jr-rOz">
@@ -234,9 +234,6 @@
             <point key="canvasLocation" x="131.8840579710145" y="59.598214285714285"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="4vb-OB-GGj"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="eye" width="240" height="240"/>
         <image name="logo-white" width="162" height="38"/>

@@ -43,5 +43,21 @@ class LoginViewController : UIViewController {
         }
     }
     
+    @IBAction func loginOnClick(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        
+        let homeViewController = storyboard.instantiateViewController(withIdentifier:
+        "HomeViewController")
+        
+        navigationController?.pushViewController(homeViewController, animated: true)
+    }
+    @IBAction func registerOnClick(_ sender: Any) {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+        
+        let homeViewController = storyboard.instantiateViewController(withIdentifier:
+        "HomeViewController")
+        
+        navigationController?.pushViewController(homeViewController, animated: true)
+    }
 }
 
