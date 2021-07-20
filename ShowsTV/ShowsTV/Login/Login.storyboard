@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Tpg-u4-TYB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -29,19 +29,6 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="p4c-Kj-Vfs">
                                         <rect key="frame" x="137" y="108" width="162" height="38"/>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-dC-QhI" userLabel="Login">
-                                        <rect key="frame" x="26" y="447" width="362" height="30"/>
-                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                        <state key="normal" title="Login">
-                                            <color key="titleColor" red="0.38355785609999998" green="0.33785986899999998" blue="0.70770210030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <color key="titleShadowColor" systemColor="systemTealColor"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="In order to continue please log in." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ITh-Yk-WpB" userLabel="Subtitle">
                                         <rect key="frame" x="19" y="255" width="280" height="23"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -94,7 +81,23 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="buttonClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eRO-gV-bZi"/>
+                                            <segue destination="eTc-ER-Ox7" kind="push" id="4hm-4o-nb3"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjT-dC-QhI" userLabel="Login">
+                                        <rect key="frame" x="26" y="447" width="362" height="30"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <state key="normal" title="Login">
+                                            <color key="titleColor" red="0.38355785609999998" green="0.33785986899999998" blue="0.70770210030000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" systemColor="systemTealColor"/>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <segue destination="eTc-ER-Ox7" kind="push" id="4vb-OB-GGj"/>
                                         </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gai-Jr-rOz">
@@ -174,12 +177,6 @@
                                     <constraint firstItem="krs-Pd-Ddz" firstAttribute="top" secondItem="ITh-Yk-WpB" secondAttribute="bottom" constant="49" id="zJw-AR-b1x"/>
                                 </constraints>
                             </view>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ue4-7L-aYf">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <viewLayoutGuide key="contentLayoutGuide" id="iew-Xv-Yea"/>
-                                <viewLayoutGuide key="frameLayoutGuide" id="0Zb-WF-pgf"/>
-                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.38431372549019605" green="0.34901960784313724" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -192,6 +189,7 @@
                             <constraint firstItem="yN1-Yb-JYh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="Zqh-xm-wgl"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="gs9-lH-G5c"/>
                     <connections>
                         <outlet property="Password" destination="J8V-2F-Hce" id="raG-kB-Wdc"/>
                         <outlet property="RememberMe" destination="mx5-1o-Sx0" id="a7G-l2-NTH"/>
@@ -199,9 +197,46 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1042.0289855072465" y="59.598214285714285"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="deE-Ma-bUR">
+            <objects>
+                <viewController id="eTc-ER-Ox7" customClass="HomeViewController" customModule="ShowsTV" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="7Ig-1K-Ta1">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="vuD-yd-HGl"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Xmj-Eu-cxT"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eVa-gZ-y3X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1877" y="78"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PQS-ew-He8">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Tpg-u4-TYB" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Fb2-dM-5k3">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="yhL-RZ-TVF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y8N-Dw-KXb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
             <point key="canvasLocation" x="131.8840579710145" y="59.598214285714285"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4vb-OB-GGj"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="eye" width="240" height="240"/>
         <image name="logo-white" width="162" height="38"/>

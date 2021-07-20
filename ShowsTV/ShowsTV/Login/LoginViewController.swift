@@ -20,7 +20,7 @@ class LoginViewController : UIViewController {
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     //MARK: Actions
@@ -42,5 +42,6 @@ class LoginViewController : UIViewController {
             rememberMe = true
         }
     }
+    
 }
 
