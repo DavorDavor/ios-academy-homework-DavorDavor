@@ -65,7 +65,7 @@
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
                                         <connections>
-                                            <action selector="rememberMe:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="RHO-XB-zB4"/>
+                                            <action selector="rememberMe:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="23U-t0-TRk"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XjC-Vp-9x4" userLabel="Register">
@@ -149,6 +149,7 @@
                                     <constraint firstItem="ZOL-6p-WC8" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" id="4dz-5o-lfL"/>
                                     <constraint firstItem="p2v-b6-kaz" firstAttribute="leading" secondItem="mx5-1o-Sx0" secondAttribute="trailing" constant="8" symbolic="YES" id="4gY-g7-i2e"/>
                                     <constraint firstItem="ITh-Yk-WpB" firstAttribute="top" secondItem="6Zi-GF-vjD" secondAttribute="bottom" constant="8" symbolic="YES" id="6Xx-JP-fju"/>
+                                    <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="9IM-PQ-5Fj"/>
                                     <constraint firstItem="gai-Jr-rOz" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="AMk-1S-bFf"/>
                                     <constraint firstItem="mx5-1o-Sx0" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="DVH-fI-2Tz"/>
                                     <constraint firstItem="6Zi-GF-vjD" firstAttribute="top" secondItem="ZOL-6p-WC8" secondAttribute="bottom" constant="106" id="E3K-Sq-Kup"/>
@@ -182,6 +183,7 @@
                         <color key="backgroundColor" red="0.38431372549019605" green="0.34901960784313724" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="yN1-Yb-JYh" secondAttribute="trailing" id="9yk-3I-Uib"/>
+                            <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="26" id="AtY-HS-Qqx"/>
                             <constraint firstItem="yN1-Yb-JYh" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="F9m-8X-ugb"/>
                             <constraint firstItem="yN1-Yb-JYh" firstAttribute="top" secondItem="5EZ-qb-Rvc" secondAttribute="top" id="GLe-oc-QjG"/>
                             <constraint firstAttribute="bottom" secondItem="yN1-Yb-JYh" secondAttribute="bottom" id="KwB-pm-0Sd"/>
@@ -191,8 +193,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="gs9-lH-G5c"/>
                     <connections>
-                        <outlet property="Password" destination="J8V-2F-Hce" id="raG-kB-Wdc"/>
-                        <outlet property="RememberMe" destination="mx5-1o-Sx0" id="a7G-l2-NTH"/>
+                        <outlet property="passwordTextField" destination="J8V-2F-Hce" id="vHG-9o-hsD"/>
+                        <outlet property="rememberMeButton" destination="mx5-1o-Sx0" id="RG0-yd-lVn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

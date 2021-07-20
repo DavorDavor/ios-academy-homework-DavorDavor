@@ -11,8 +11,9 @@ import UIKit
 class LoginViewController : UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet private weak var Password: UITextField!
-    @IBOutlet private weak var RememberMe: UIButton!
+    @IBOutlet private weak var passwordTextField: UITextField!
+    
+    @IBOutlet weak var rememberMeButton: UIButton!
     
     // MARK: - Properties
     private var rememberMe = false
@@ -26,19 +27,15 @@ class LoginViewController : UIViewController {
     //MARK: Actions
     
     @IBAction private func showPassword(_ sender: Any) {
-        if Password.isSecureTextEntry {
-            Password.isSecureTextEntry = false
-        } else {
-            Password.isSecureTextEntry = true
-        }
+            passwordTextField.isSecureTextEntry.toggle()
     }
     
     @IBAction func rememberMe(_ sender: Any) {
         if rememberMe {
-            RememberMe.setBackgroundImage(UIImage(named: "unchecked"), for: UIControl.State.normal)
+            rememberMeButton.setBackgroundImage(UIImage(named: "unchecked"), for: .normal)
             rememberMe = false
         } else {
-            RememberMe.setBackgroundImage(UIImage(named: "checked"), for: UIControl.State.normal)
+            rememberMeButton.setBackgroundImage(UIImage(named: "checked"), for: .normal)
             rememberMe = true
         }
     }
