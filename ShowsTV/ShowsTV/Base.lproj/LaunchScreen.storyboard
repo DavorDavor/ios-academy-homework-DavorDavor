@@ -16,21 +16,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-Fi-3FO">
-                                <rect key="frame" x="-32" y="0.0" width="240" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-left" translatesAutoresizingMaskIntoConstraints="NO" id="lrI-Fi-3FO">
+                                <rect key="frame" x="0.0" y="0.0" width="140" height="100"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="logo-white" translatesAutoresizingMaskIntoConstraints="NO" id="UiE-fc-em6">
                                 <rect key="frame" x="85.827557648929997" y="384.80070210395252" width="240" height="127.99999999999989"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="VrQ-Ip-taB">
-                                <rect key="frame" x="138" y="0.0" width="374" height="237"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash-top-right" translatesAutoresizingMaskIntoConstraints="NO" id="VrQ-Ip-taB">
+                                <rect key="frame" x="212" y="0.0" width="202" height="266"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.32156862745098036" green="0.21176470588235294" blue="0.5490196078431373" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="VrQ-Ip-taB" secondAttribute="trailing" id="4vU-46-nKB"/>
+                            <constraint firstItem="lrI-Fi-3FO" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="LZI-ZV-slJ"/>
+                            <constraint firstItem="VrQ-Ip-taB" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Vfy-5E-hVW"/>
+                            <constraint firstItem="lrI-Fi-3FO" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Wme-Hx-sKv"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -11,28 +11,35 @@ import UIKit
 class LoginViewController : UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet private weak var Password: UITextField!
+    @IBOutlet private weak var RememberMe: UIButton!
     
     // MARK: - Properties
-    
-    private var numberOfClicks = 0
+    private var rememberMe = false
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
     
     //MARK: Actions
-    @IBAction private func buttonClick(_ sender: Any) {
-        numberOfClicks += 1
-        titleLabel.text = String(numberOfClicks)
-        print("Button disturbed")
-        
-        if activityIndicator.isAnimating{
-            activityIndicator.stopAnimating()
-        } else{
-            activityIndicator.startAnimating()
+    
+    @IBAction private func showPassword(_ sender: Any) {
+        if Password.isSecureTextEntry {
+            Password.isSecureTextEntry = false
+        } else {
+            Password.isSecureTextEntry = true
+        }
+    }
+    
+    @IBAction func rememberMe(_ sender: Any) {
+        if rememberMe {
+            RememberMe.setBackgroundImage(UIImage(named: "unchecked"), for: UIControl.State.normal)
+            rememberMe = false
+        } else {
+            RememberMe.setBackgroundImage(UIImage(named: "checked"), for: UIControl.State.normal)
+            rememberMe = true
         }
     }
 }
