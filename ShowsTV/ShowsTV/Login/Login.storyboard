@@ -111,18 +111,6 @@
                                             <constraint firstAttribute="height" constant="1" id="qF5-aB-r0v" userLabel="height = 1"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-b6-kaz" userLabel="RememberMeLabel">
-                                        <rect key="frame" x="54" y="414" width="94" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" systemColor="systemBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zi-GF-vjD" userLabel="Title">
-                                        <rect key="frame" x="21" y="206" width="91.5" height="41"/>
-                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
-                                        <color key="textColor" systemColor="systemBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1tr-d9-XF1" userLabel="ShowPassword">
                                         <rect key="frame" x="340" y="371" width="36" height="33"/>
                                         <constraints>
@@ -138,6 +126,18 @@
                                             <action selector="showPassword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zv9-Km-gCt"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-b6-kaz" userLabel="RememberMeLabel">
+                                        <rect key="frame" x="54" y="414" width="94" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zi-GF-vjD" userLabel="Title">
+                                        <rect key="frame" x="21" y="206" width="91.5" height="41"/>
+                                        <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6Zi-GF-vjD" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="21" id="0nV-Va-LRe"/>
@@ -174,6 +174,12 @@
                                     <constraint firstItem="krs-Pd-Ddz" firstAttribute="top" secondItem="ITh-Yk-WpB" secondAttribute="bottom" constant="49" id="zJw-AR-b1x"/>
                                 </constraints>
                             </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ue4-7L-aYf">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <viewLayoutGuide key="contentLayoutGuide" id="iew-Xv-Yea"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="0Zb-WF-pgf"/>
+                            </scrollView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" red="0.38431372549019605" green="0.34901960784313724" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
