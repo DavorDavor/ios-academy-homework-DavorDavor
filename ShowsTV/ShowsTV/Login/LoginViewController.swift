@@ -19,7 +19,6 @@ class LoginViewController : UIViewController {
     
     // MARK: - Properties
     private var rememberMe = false
-    private var successfulAPIcall = false
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -53,15 +52,6 @@ class LoginViewController : UIViewController {
         } else {
             loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
         }
-
-        if successfulAPIcall {
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-
-            let homeViewController = storyboard.instantiateViewController(withIdentifier:
-            "HomeViewController")
-
-            navigationController?.pushViewController(homeViewController, animated: true)
-        }
     }
     
     // triggers register and login API call, pushes to Home on success
@@ -73,15 +63,6 @@ class LoginViewController : UIViewController {
             statusLabel.text = "Please enter both email and password."
         } else {
             registerUserWith(email: emailTextField.text!, password: passwordTextField.text!)
-        }
-        
-        if successfulAPIcall {
-            let storyboard = UIStoryboard(name: "Home", bundle: nil)
-
-            let homeViewController = storyboard.instantiateViewController(withIdentifier:
-            "HomeViewController")
-
-            navigationController?.pushViewController(homeViewController, animated: true)
         }
     }
 }
@@ -111,7 +92,7 @@ private extension LoginViewController {
                 case .success(let userResponse):
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
                     self?.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self?.successfulAPIcall = true
+                    self?.navigateToHome()
                 case .failure(let error):
                     self?.statusLabel.text = "Login failed"
                     SVProgressHUD.showError(withStatus: "Failure")
@@ -120,7 +101,15 @@ private extension LoginViewController {
             }
     }
     
-    
+    func handleSuccesfulLogin(for user: User, headers: [String: String]) {
+        guard let authInfo = try? AuthInfo(headers: headers) else {
+            statusLabel.text = "Missing headers"
+            SVProgressHUD.showError(withStatus: "Missing headers")
+            return
+        }
+        statusLabel.text = "Success" 
+        SVProgressHUD.showSuccess(withStatus: "Success")
+    }
 }
 
 
@@ -150,7 +139,7 @@ private extension LoginViewController {
                 case .success(let userResponse):
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
                     self?.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self?.successfulAPIcall = true
+                    self?.navigateToHome()
                 case .failure(let error):
                     self?.statusLabel.text = "Registration failed"
                     SVProgressHUD.showError(withStatus: "Failure")
@@ -158,14 +147,17 @@ private extension LoginViewController {
                 }
             }
     }
-    func handleSuccesfulLogin(for user: User, headers: [String: String]) {
-        guard let authInfo = try? AuthInfo(headers: headers) else {
-            statusLabel.text = "Missing headers"
-            SVProgressHUD.showError(withStatus: "Missing headers")
-            return
-        }
-        statusLabel.text = "Success"
-        SVProgressHUD.showSuccess(withStatus: "Success")
+}
+
+// MARK: function to navigate to HomeViewController
+private extension LoginViewController {
+    func navigateToHome() {
+        let storyboard = UIStoryboard(name: "Home", bundle: nil)
+
+        let homeViewController = storyboard.instantiateViewController(withIdentifier:
+        "HomeViewController")
+
+        navigationController?.pushViewController(homeViewController, animated: true)
     }
 }
 
