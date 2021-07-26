@@ -17,7 +17,6 @@ class LoginViewController : UIViewController {
     @IBOutlet private weak var rememberMeButton: UIButton!
     
     // MARK: - Properties
-    private var rememberMe = false
     
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
@@ -97,7 +96,6 @@ private extension LoginViewController {
                     guard let self = self else { return }
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
                     self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self.navigateToHome()
                 case .failure(let error):
                     guard let self = self else { return }
                     let alert = UIAlertController(title: "Login failed.", message: "Please check your email and/or password .", preferredStyle: .alert)
@@ -115,6 +113,7 @@ private extension LoginViewController {
             return
         }
         SVProgressHUD.showSuccess(withStatus: "Success")
+        self.navigateToHome(user: user, authInfo: authInfo)
     }
 }
 
@@ -146,7 +145,6 @@ private extension LoginViewController {
                     guard let self = self else { return }
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
                     self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self.navigateToHome()
                 case .failure(let error):
                     guard let self = self else { return }
                     let alert = UIAlertController(title: "Registration failed.", message: "Email invalid or already taken.", preferredStyle: .alert)
@@ -161,12 +159,12 @@ private extension LoginViewController {
 
 // MARK: function to navigate to HomeViewController
 private extension LoginViewController {
-    func navigateToHome() {
+    func navigateToHome(user:User, authInfo:AuthInfo) {
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
-        let homeViewController = storyboard.instantiateViewController(withIdentifier:
-        "HomeViewController")
-
+        guard let homeViewController =         storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
+        homeViewController.setUserResponseAndAuthInfo(user: user, authInfo: authInfo)
+        
         navigationController?.pushViewController(homeViewController, animated: true)
     }
 }

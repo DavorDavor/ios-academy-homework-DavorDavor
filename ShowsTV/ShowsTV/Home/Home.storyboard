@@ -9,25 +9,47 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
+        <!--HomeViewController-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController storyboardIdentifier="HomeViewController" id="Y6W-OH-hqX" customClass="HomeViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" customClass="HomeViewController">
+                <viewController storyboardIdentifier="HomeViewController" id="Y6W-OH-hqX" userLabel="HomeViewController" customClass="HomeViewController" customModule="ShowsTV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc" userLabel="HomeViewController" customClass="HomeViewController">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdv-qa-4mu" userLabel="buttonText">
+                                <rect key="frame" x="137" y="268" width="139" height="30"/>
+                                <state key="normal" title="Button"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rst-JG-zRw" userLabel="label">
+                                <rect key="frame" x="186" y="156" width="42" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre" userLabel="SafeArea"/>
+                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <constraints>
+                            <constraint firstItem="zdv-qa-4mu" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="137" id="1Df-nd-6XQ"/>
+                            <constraint firstItem="Rst-JG-zRw" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="Vw2-Ex-wmd"/>
+                            <constraint firstItem="zdv-qa-4mu" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="224" id="m45-5x-7Pf"/>
+                            <constraint firstItem="Rst-JG-zRw" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="112" id="pSK-7S-k3Y"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zdv-qa-4mu" secondAttribute="trailing" constant="138" id="yIk-UL-5xY"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="buttonText" destination="zdv-qa-4mu" id="eiM-eo-3Bj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-25" y="38"/>
+            <point key="canvasLocation" x="-26.086956521739133" y="37.5"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
