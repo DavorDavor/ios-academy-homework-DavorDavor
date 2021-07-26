@@ -23,6 +23,9 @@ class LoginViewController : UIViewController {
     //MARK: - Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
@@ -33,37 +36,40 @@ class LoginViewController : UIViewController {
     }
     
     // Toggles 'Remember me' checkbox
-    @IBAction func rememberMe(_ sender: Any) {
-        if rememberMe {
-            rememberMeButton.setBackgroundImage(UIImage(named: "unchecked"), for: .normal)
-            rememberMe = false
-        } else {
-            rememberMeButton.setBackgroundImage(UIImage(named: "checked"), for: .normal)
-            rememberMe = true
-        }
+    @IBAction private func rememberMe(_ sender: Any) {
+        rememberMeButton.isSelected.toggle()
     }
     
     // triggers login API call, pushes to Home on success
-    @IBAction func loginOnClick(_ sender: Any) {
+    @IBAction private func loginOnClick(_ sender: Any) {
         
         // Check if fields empty
-        if emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false {
+        guard
+            let username = emailTextField.text,
+            let password = passwordTextField.text,
+            !username.isEmpty,
+            !password.isEmpty
+        else {
             statusLabel.text = "Please enter both email and password."
-        } else {
-            loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
+            return
         }
+        loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     // triggers register and login API call, pushes to Home on success
-    @IBAction func registerOnClick(_ sender: Any) {
-        
+    @IBAction private func registerOnClick(_ sender: Any) {
         
         // Check if fields empty
-        if emailTextField.text?.isEmpty ?? false || passwordTextField.text?.isEmpty ?? false {
+        guard
+            let username = emailTextField.text,
+            let password = passwordTextField.text,
+            !username.isEmpty,
+            !password.isEmpty
+        else {
             statusLabel.text = "Please enter both email and password."
-        } else {
-            registerUserWith(email: emailTextField.text!, password: passwordTextField.text!)
+            return
         }
+        registerUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
 }
 
@@ -90,11 +96,13 @@ private extension LoginViewController {
             .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 switch dataResponse.result {
                 case .success(let userResponse):
+                    guard let self = self else { return }
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
-                    self?.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self?.navigateToHome()
+                    self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
+                    self.navigateToHome()
                 case .failure(let error):
-                    self?.statusLabel.text = "Login failed"
+                    guard let self = self else { return }
+                    self.statusLabel.text = "Login failed"
                     SVProgressHUD.showError(withStatus: "Failure")
                     print("Error parsing data: \(error)")
                 }
@@ -137,11 +145,13 @@ private extension LoginViewController {
             .responseDecodable(of: UserResponse.self) { [weak self] dataResponse in
                 switch dataResponse.result {
                 case .success(let userResponse):
+                    guard let self = self else { return }
                     let headers = dataResponse.response?.headers.dictionary ?? [:]
-                    self?.handleSuccesfulLogin(for: userResponse.user, headers: headers)
-                    self?.navigateToHome()
+                    self.handleSuccesfulLogin(for: userResponse.user, headers: headers)
+                    self.navigateToHome()
                 case .failure(let error):
-                    self?.statusLabel.text = "Registration failed"
+                    guard let self = self else { return }
+                    self.statusLabel.text = "Registration failed"
                     SVProgressHUD.showError(withStatus: "Failure")
                     print("Error parsing data: \(error)")
                 }

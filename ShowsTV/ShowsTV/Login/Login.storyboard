@@ -64,6 +64,7 @@
                                         <state key="normal" backgroundImage="unchecked">
                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                         </state>
+                                        <state key="selected" backgroundImage="checked"/>
                                         <connections>
                                             <action selector="rememberMe:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="23U-t0-TRk"/>
                                         </connections>
@@ -247,6 +248,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checked" width="720" height="754"/>
         <image name="eye" width="240" height="240"/>
         <image name="logo-white" width="162" height="38"/>
         <image name="splash-top-left" width="140" height="100"/>
