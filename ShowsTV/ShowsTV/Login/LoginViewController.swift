@@ -15,7 +15,6 @@ class LoginViewController : UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var rememberMeButton: UIButton!
-    @IBOutlet private weak var statusLabel: UILabel!
     
     // MARK: - Properties
     private var rememberMe = false
@@ -50,7 +49,7 @@ class LoginViewController : UIViewController {
             !username.isEmpty,
             !password.isEmpty
         else {
-            statusLabel.text = "Please enter both email and password."
+            
             return
         }
         loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
@@ -66,7 +65,6 @@ class LoginViewController : UIViewController {
             !username.isEmpty,
             !password.isEmpty
         else {
-            statusLabel.text = "Please enter both email and password."
             return
         }
         registerUserWith(email: emailTextField.text!, password: passwordTextField.text!)
@@ -102,7 +100,9 @@ private extension LoginViewController {
                     self.navigateToHome()
                 case .failure(let error):
                     guard let self = self else { return }
-                    self.statusLabel.text = "Login failed"
+                    let alert = UIAlertController(title: "Login failed.", message: "Please check your email and/or password .", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     SVProgressHUD.showError(withStatus: "Failure")
                     print("Error parsing data: \(error)")
                 }
@@ -111,11 +111,9 @@ private extension LoginViewController {
     
     func handleSuccesfulLogin(for user: User, headers: [String: String]) {
         guard let authInfo = try? AuthInfo(headers: headers) else {
-            statusLabel.text = "Missing headers"
             SVProgressHUD.showError(withStatus: "Missing headers")
             return
         }
-        statusLabel.text = "Success" 
         SVProgressHUD.showSuccess(withStatus: "Success")
     }
 }
@@ -151,7 +149,9 @@ private extension LoginViewController {
                     self.navigateToHome()
                 case .failure(let error):
                     guard let self = self else { return }
-                    self.statusLabel.text = "Registration failed"
+                    let alert = UIAlertController(title: "Registration failed.", message: "Email invalid or already taken.", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     SVProgressHUD.showError(withStatus: "Failure")
                     print("Error parsing data: \(error)")
                 }
