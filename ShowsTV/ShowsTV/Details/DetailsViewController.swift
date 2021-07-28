@@ -18,6 +18,7 @@ class DetailsViewController : UIViewController {
     var user:User?
     var authInfo:AuthInfo?
     var show:Show?
+    private var reviews:ReviewsResponse?
     
     // MARK: outlets
     
@@ -33,25 +34,49 @@ class DetailsViewController : UIViewController {
         self.title = show?.title
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34, weight: .light)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
-        
-
 
         detailsTitleLabel.text = show?.title
+        
+        SVProgressHUD.show()
         setupTableView()
+        guard let authInfo = authInfo else {return}
+        guard let show = show else {return}
+        let show_id = show.id
+     AF .request(
+        "https://tv-shows.infinum.academy/shows/\(show_id)/reviews",
+             method: .get,
+             parameters: ["page": "1", "items": "100"], // pagination arguments
+             headers: HTTPHeaders(authInfo.headers)
+         )
+         .validate()
+         .responseDecodable(of: ReviewsResponse.self) { [weak self] dataResponse in
+            switch dataResponse.result {
+            case .success(let reviewsResponse):
+                guard let self = self else {return}
+                self.setReviews(reviews: reviewsResponse)
+                SVProgressHUD.showSuccess(withStatus: "Success")
+            case .failure(let error):
+                print("Error parsing data: \(error)")
+                SVProgressHUD.showError(withStatus: "Failure")
+            }
+         }
     }
     
+    // hide navigation bar
     override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setNavigationBarHidden(false, animated: false)
-        
+    }
+
+    
+    func setReviews(reviews:ReviewsResponse){
+        self.reviews = reviews
+        detailsTableView.reloadData()
     }
     
-    func setShow(show:Show){
-        self.show = show
-    }
-    
-    func setUserResponseAndAuthInfo(user:User, authInfo:AuthInfo){
+    func setUserResponseAndAuthInfoAndShow(user:User, authInfo:AuthInfo, show:Show) {
         self.user = user
         self.authInfo = authInfo
+        self.show = show
     }
 }
 
@@ -62,6 +87,7 @@ extension DetailsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(
             withIdentifier: String(describing: detailsTableViewCell.self),
             for: indexPath
@@ -76,6 +102,32 @@ extension DetailsViewController: UITableViewDataSource {
 
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//
+//
+//           if let string = self.tableData[indexPath.row] as? String
+//           {
+//               let cell:CustomCountryCell = self.tableView.dequeueReusableCell(withIdentifier: "customCountryCell") as! CustomCountryCell
+//
+//               cell.countryName?.text = string
+//               cell.countryIcon?.image = UIImage(named:string)
+//               return cell
+//           }
+//
+//           else if let population = self.tableData[indexPath.row] as? Any, population is Double || population is Int {
+//
+//               let cell:CustomPopulationCell = self.tableView.dequeueReusableCell(withIdentifier: "customPopulationCell") as! CustomPopulationCell
+//
+//               cell.countryPopulation?.text = "Population is \(population) million"
+//
+//               return cell
+//
+//           }
+//
+//           return UITableViewCell()
+//
+//       }
 }
 
 // MARK: - tableView setup

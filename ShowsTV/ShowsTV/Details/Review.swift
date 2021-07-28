@@ -13,9 +13,8 @@ struct ReviewsResponse : Codable {
 
 struct Review : Codable {
     let id:String
-    let average_rating:Int
-    let description:String
-    let image_url:String
-    let no_of_reviews:Int
-    let title:String
+    let comment:String
+    let rating:Int
+    let show_id:Int
+    let user:User
 }

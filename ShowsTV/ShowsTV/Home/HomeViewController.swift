@@ -76,7 +76,6 @@ extension HomeViewController: UITableViewDelegate {
         guard let user = user else {return}
         guard let authInfo = authInfo else {return}
         let show = shows.shows[indexPath.row]
-        print("Selected Item: \(show)")
         navigateToDetails(user: user, authInfo: authInfo, show: show)
     }
 }
@@ -130,15 +129,13 @@ private extension HomeViewController {
     func navigateToDetails(user:User, authInfo:AuthInfo, show:Show) {
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
 
-        guard let detailsViewController =         storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {return}
-        detailsViewController.setUserResponseAndAuthInfo(user: user, authInfo: authInfo)
-        detailsViewController.setShow(show: show)
+        guard let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {return}
         
+        detailsViewController.setUserResponseAndAuthInfoAndShow(user: user, authInfo: authInfo, show: show)
         
         let backItem = UIBarButtonItem()
             backItem.title = "Shows"
             navigationItem.backBarButtonItem = backItem
-
         
         navigationController?.pushViewController(detailsViewController, animated: true)
     }

@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Dws-mO-vQP">
-                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsTableViewCell" rowHeight="198" id="FgR-aM-Zi1" customClass="detailsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
@@ -83,30 +83,37 @@
                                             <outlet property="descriptionLabel" destination="0bA-wG-8Dz" id="0DM-E9-gnb"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingsTableViewCell" id="4Dj-y2-pFf" customClass="ratingsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="222.5" width="414" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dj-y2-pFf" id="onK-3O-pR1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="REVIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-55-DcS">
+                                                    <rect key="frame" x="139" y="11" width="62" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRV-Q0-j1T">
-                                <rect key="frame" x="10" y="44" width="394" height="39.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="33"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Dws-mO-vQP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="FhS-ZC-nLU"/>
+                            <constraint firstItem="Dws-mO-vQP" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="FhS-ZC-nLU"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="Dws-mO-vQP" secondAttribute="bottom" id="aoG-IC-nCc"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Dws-mO-vQP" secondAttribute="trailing" id="qia-l4-mhm"/>
                             <constraint firstItem="Dws-mO-vQP" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="re3-yV-X6d"/>
-                            <constraint firstItem="WRV-Q0-j1T" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="ref-ev-RBA"/>
-                            <constraint firstItem="WRV-Q0-j1T" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="10" id="sDT-Zo-3YW"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="WRV-Q0-j1T" secondAttribute="trailing" constant="10" id="zGZ-CZ-qsN"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="detailsTableView" destination="Dws-mO-vQP" id="Ghw-KJ-A2M"/>
-                        <outlet property="detailsTitleLabel" destination="WRV-Q0-j1T" id="8L5-NE-wiF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

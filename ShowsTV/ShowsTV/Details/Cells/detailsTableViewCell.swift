@@ -27,7 +27,6 @@ final class detailsTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
 
-        titleLabel.text = nil
     }
 
 }
