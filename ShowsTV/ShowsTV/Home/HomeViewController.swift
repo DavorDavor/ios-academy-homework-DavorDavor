@@ -29,7 +29,7 @@ class HomeViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let authInfo = authInfo else {return}
-        
+
         SVProgressHUD.show()
         setupTableView()
      AF .request(
@@ -50,6 +50,10 @@ class HomeViewController : UIViewController {
                 SVProgressHUD.showError(withStatus: "Failure")
             }
          }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     
@@ -106,7 +110,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - Private
+// MARK: - tableView setup
 
 private extension HomeViewController {
 
@@ -129,6 +133,12 @@ private extension HomeViewController {
         guard let detailsViewController =         storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {return}
         detailsViewController.setUserResponseAndAuthInfo(user: user, authInfo: authInfo)
         detailsViewController.setShow(show: show)
+        
+        
+        let backItem = UIBarButtonItem()
+            backItem.title = "Shows"
+            navigationItem.backBarButtonItem = backItem
+
         
         navigationController?.pushViewController(detailsViewController, animated: true)
     }

@@ -13,11 +13,21 @@ final class detailsTableViewCell: UITableViewCell {
     // MARK: - Private UI
 
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var descriptionLabel: UILabel!
+    @IBOutlet private weak var showImage: UILabel!
+//    @IBOutlet private weak var : UILabel!
+//    @IBOutlet private weak var titleLabel: UILabel!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
         setupUI()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+
+        titleLabel.text = nil
     }
 
 }
@@ -27,7 +37,6 @@ final class detailsTableViewCell: UITableViewCell {
 extension detailsTableViewCell {
 
     func configure(with item: Show) {
-        titleLabel.text = item.title
     }
 }
 
