@@ -11,8 +11,12 @@ import UIKit
 final class ratingsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
+    
+    @IBOutlet private weak var userIDLabel: UILabel!
+    @IBOutlet private weak var reviewLabel: UILabel!
+    @IBOutlet private weak var ratingsView: RatingView!
+    
 
-    @IBOutlet private weak var titleLabel: UILabel!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -26,8 +30,10 @@ final class ratingsTableViewCell: UITableViewCell {
 
 extension ratingsTableViewCell {
 
-    func configure(with item: Show) {
-        titleLabel.text = item.title
+    func configure(with review: Review) {
+        self.userIDLabel.text = review.user.email
+        self.reviewLabel.text = review.comment
+        self.ratingsView.setRoundedRating(review.rating)
     }
 }
 
@@ -35,6 +41,8 @@ extension ratingsTableViewCell {
 
 private extension ratingsTableViewCell {
 
+    
+    
     func setupUI() {
     }
 }

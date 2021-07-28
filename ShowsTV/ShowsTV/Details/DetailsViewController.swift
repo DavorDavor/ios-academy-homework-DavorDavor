@@ -104,6 +104,10 @@ extension DetailsViewController: UITableViewDataSource {
             withIdentifier: String(describing: ratingsTableViewCell.self),
             for: indexPath
         ) as! ratingsTableViewCell
+        guard let reviews = reviews else { return UITableViewCell() }
+        
+        cell.configure(with: reviews.reviews[indexPath.row - 1])
+
         return cell
     }
     

@@ -112,7 +112,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-fJ-WwB">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-fJ-WwB" customClass="RatingView" customModule="ShowsTV" customModuleProvider="target">
                                                     <rect key="frame" x="92" y="52" width="140" height="28"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
@@ -142,6 +142,11 @@
                                                 <constraint firstItem="lB9-fJ-WwB" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leadingMargin" constant="72" id="zVi-Om-01w"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="ratingsView" destination="lB9-fJ-WwB" id="4ZA-Gc-Xwf"/>
+                                            <outlet property="reviewLabel" destination="gxF-55-DcS" id="NJS-ME-0v8"/>
+                                            <outlet property="userIDLabel" destination="vwC-dQ-OrN" id="8Ui-8W-68b"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

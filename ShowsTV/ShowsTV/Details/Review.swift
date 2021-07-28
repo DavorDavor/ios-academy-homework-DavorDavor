@@ -14,7 +14,7 @@ struct ReviewsResponse : Codable {
 struct Review : Codable {
     let id:String
     let comment:String
-    let rating:Int
+    let rating:Double
     let show_id:Int
     let user:User
 }
