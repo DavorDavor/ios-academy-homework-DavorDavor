@@ -18,18 +18,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ixn-gF-y4V" userLabel="ShowsTableView">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="94" width="414" height="768"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showsTableViewCell" rowHeight="55" id="UqI-t4-3gb" customClass="showsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.5" width="414" height="55"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="showsTableViewCell" rowHeight="123" id="UqI-t4-3gb" customClass="showsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.5" width="414" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UqI-t4-3gb" id="dLa-Nb-cBG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="55"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="123"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HL9-d0-bpO" userLabel="Title">
-                                                    <rect key="frame" x="15" y="15" width="384" height="25"/>
+                                                    <rect key="frame" x="15" y="15" width="384" height="93"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -51,12 +51,20 @@
                                     <outlet property="dataSource" destination="Y6W-OH-hqX" id="mte-Cq-SKU"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Shows" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uA8-DE-kmd">
+                                <rect key="frame" x="157.5" y="44" width="99" height="41"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre" userLabel="SafeArea"/>
-                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ixn-gF-y4V" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="FkA-gP-5lp"/>
+                            <constraint firstItem="ixn-gF-y4V" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="50" id="3Ln-WB-URz"/>
+                            <constraint firstItem="uA8-DE-kmd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="3P7-Mg-kto"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="ixn-gF-y4V" secondAttribute="trailing" id="TNf-6a-dbK"/>
+                            <constraint firstItem="uA8-DE-kmd" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="daJ-3S-TmE"/>
                             <constraint firstItem="ixn-gF-y4V" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="eHH-cY-Kka"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="ixn-gF-y4V" secondAttribute="bottom" id="pAi-Qr-s8R"/>
                         </constraints>
@@ -74,8 +82,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemOrangeColor">
-            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGroupedBackgroundColor">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

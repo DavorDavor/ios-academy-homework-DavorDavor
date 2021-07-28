@@ -1,18 +1,17 @@
 //
-//  Show.swift
+//  Review.swift
 //  ShowsTV
 //
-//  Created by Infinum  on 26.07.2021..
+//  Created by Infinum  on 28.07.2021..
 //
 
 import Foundation
 
-
-struct ShowsResponse : Codable {
-    let shows: [Show]
+struct ReviewsResponse : Codable {
+    let reviews: [Review]
 }
 
-struct Show : Codable {
+struct Review : Codable {
     let id:String
     let average_rating:Int
     let description:String
@@ -20,5 +19,3 @@ struct Show : Codable {
     let no_of_reviews:Int
     let title:String
 }
-
-

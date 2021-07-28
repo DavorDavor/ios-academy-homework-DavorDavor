@@ -1,11 +1,14 @@
-
-//  showsTableViewCell.swift
+//
+//  RatingsTableViewCell.swift
 //  ShowsTV
 //
+//  Created by Infinum  on 28.07.2021..
+//
+
 
 import UIKit
 
-final class showsTableViewCell: UITableViewCell {
+final class ratingsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
 
@@ -17,17 +20,11 @@ final class showsTableViewCell: UITableViewCell {
         setupUI()
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-        titleLabel.text = nil
-    }
-
 }
 
 // MARK: - Configure
 
-extension showsTableViewCell {
+extension ratingsTableViewCell {
 
     func configure(with item: Show) {
         titleLabel.text = item.title
@@ -36,7 +33,7 @@ extension showsTableViewCell {
 
 // MARK: - Private
 
-private extension showsTableViewCell {
+private extension ratingsTableViewCell {
 
     func setupUI() {
     }
