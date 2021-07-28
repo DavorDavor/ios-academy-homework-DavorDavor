@@ -34,10 +34,7 @@ class DetailsViewController : UIViewController {
         self.title = show?.title
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34, weight: .light)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
-
-        detailsTitleLabel.text = show?.title
         
-        SVProgressHUD.show()
         setupTableView()
         guard let authInfo = authInfo else {return}
         guard let show = show else {return}
@@ -54,10 +51,8 @@ class DetailsViewController : UIViewController {
             case .success(let reviewsResponse):
                 guard let self = self else {return}
                 self.setReviews(reviews: reviewsResponse)
-                SVProgressHUD.showSuccess(withStatus: "Success")
             case .failure(let error):
                 print("Error parsing data: \(error)")
-                SVProgressHUD.showError(withStatus: "Failure")
             }
          }
     }
@@ -78,56 +73,39 @@ class DetailsViewController : UIViewController {
         self.authInfo = authInfo
         self.show = show
     }
+    
+    @IBAction private func writeAReviewOnClick(_ sender: Any) {
+        guard let user = user else{return}
+        guard let show = show else{return}
+        guard let authInfo = authInfo else{return}
+        navigateToReview(user: user, authInfo: authInfo, show: show)
+    }
 }
 
 // MARK: - table view row and cell setup
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        guard let reviews = reviews else {return 0}
+        return 1 + reviews.reviews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        if(indexPath.row == 0) {
+            let cell = tableView.dequeueReusableCell(
+                withIdentifier: String(describing: detailsTableViewCell.self),
+                for: indexPath
+            ) as! detailsTableViewCell
+            cell.configure(with: show!)
+            
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: detailsTableViewCell.self),
+            withIdentifier: String(describing: ratingsTableViewCell.self),
             for: indexPath
-        ) as! detailsTableViewCell
-        
-//        let cell = tableView.dequeueReusableCell(
-//            withIdentifier: String(describing: showsTableViewCell.self),
-//            for: indexPath
-//        ) as! showsTableViewCell
-
-        cell.configure(with: show!)
-
+        ) as! ratingsTableViewCell
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//
-//
-//           if let string = self.tableData[indexPath.row] as? String
-//           {
-//               let cell:CustomCountryCell = self.tableView.dequeueReusableCell(withIdentifier: "customCountryCell") as! CustomCountryCell
-//
-//               cell.countryName?.text = string
-//               cell.countryIcon?.image = UIImage(named:string)
-//               return cell
-//           }
-//
-//           else if let population = self.tableData[indexPath.row] as? Any, population is Double || population is Int {
-//
-//               let cell:CustomPopulationCell = self.tableView.dequeueReusableCell(withIdentifier: "customPopulationCell") as! CustomPopulationCell
-//
-//               cell.countryPopulation?.text = "Population is \(population) million"
-//
-//               return cell
-//
-//           }
-//
-//           return UITableViewCell()
-//
-//       }
 }
 
 // MARK: - tableView setup
@@ -135,7 +113,7 @@ extension DetailsViewController: UITableViewDataSource {
 private extension DetailsViewController {
 
     func setupTableView() {
-        detailsTableView.estimatedRowHeight = 110
+        detailsTableView.estimatedRowHeight = 250
         detailsTableView.rowHeight = UITableView.automaticDimension
 
         detailsTableView.tableFooterView = UIView()
@@ -152,5 +130,31 @@ extension DetailsViewController: UITableViewDelegate {
         detailsTableView.deselectRow(at: indexPath, animated: true)
         guard let show = show else {return}
         print("Selected Item: \(show)")
+    }
+}
+
+extension DetailsViewController {
+    func navigateToReview(user:User, authInfo:AuthInfo, show:Show) {
+        
+        let storyboard = UIStoryboard(name: "Ratings", bundle: nil)
+
+        guard let ratingsViewController = storyboard.instantiateViewController(withIdentifier: "RatingsViewController") as? RatingsViewController else {return}
+
+        
+        
+       let navigationController = UINavigationController(rootViewController: ratingsViewController)
+
+        
+        ratingsViewController.setUserResponseAndAuthInfoAndShow(user: user, authInfo: authInfo, show: show)
+        
+       present(navigationController, animated: true)
+        
+        
+
+        
+        
+//        let backItem = UIBarButtonItem()
+//            backItem.title = "Shows"
+//            navigationItem.backBarButtonItem = backItem
     }
 }

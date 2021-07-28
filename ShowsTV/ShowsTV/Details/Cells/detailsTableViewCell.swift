@@ -12,10 +12,9 @@ final class detailsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
 
-    @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var showImage: UILabel!
-//    @IBOutlet private weak var : UILabel!
+   @IBOutlet private weak var reviewInfoLabel: UILabel!
 //    @IBOutlet private weak var titleLabel: UILabel!
 
     // MARK: - Lifecycle
@@ -36,6 +35,8 @@ final class detailsTableViewCell: UITableViewCell {
 extension detailsTableViewCell {
 
     func configure(with item: Show) {
+        descriptionLabel.text = item.description
+        reviewInfoLabel.text = String(item.no_of_reviews) + " REVIEWS, " + String(item.average_rating) + " AVERAGE"
     }
 }
 
