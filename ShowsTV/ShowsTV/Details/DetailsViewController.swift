@@ -28,6 +28,7 @@ class DetailsViewController : UIViewController {
     @IBOutlet private weak var detailsRating: UITableView!
     
     
+    
     // MARK: functions, API fetching
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -113,8 +114,8 @@ extension DetailsViewController: UITableViewDataSource {
 private extension DetailsViewController {
 
     func setupTableView() {
-        detailsTableView.estimatedRowHeight = 250
         detailsTableView.rowHeight = UITableView.automaticDimension
+        detailsTableView.estimatedRowHeight = 250
 
         detailsTableView.tableFooterView = UIView()
 

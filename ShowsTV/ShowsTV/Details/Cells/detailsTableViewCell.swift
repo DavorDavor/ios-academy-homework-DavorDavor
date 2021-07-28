@@ -14,8 +14,8 @@ final class detailsTableViewCell: UITableViewCell {
 
     @IBOutlet private weak var descriptionLabel: UILabel!
     @IBOutlet private weak var showImage: UILabel!
-   @IBOutlet private weak var reviewInfoLabel: UILabel!
-//    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var reviewInfoLabel: UILabel!
+    @IBOutlet private weak var ratingsView: RatingView!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -37,6 +37,9 @@ extension detailsTableViewCell {
     func configure(with item: Show) {
         descriptionLabel.text = item.description
         reviewInfoLabel.text = String(item.no_of_reviews) + " REVIEWS, " + String(item.average_rating) + " AVERAGE"
+        self.ratingsView.setRoundedRating(item.average_rating)
+        
+        self.ratingsView.isEnabled = false
     }
 }
 
@@ -45,5 +48,6 @@ extension detailsTableViewCell {
 private extension detailsTableViewCell {
 
     func setupUI() {
+        
     }
 }
