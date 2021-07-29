@@ -17,4 +17,5 @@ struct Review : Codable {
     let rating:Double
     let show_id:Int
     let user:User
+
 }

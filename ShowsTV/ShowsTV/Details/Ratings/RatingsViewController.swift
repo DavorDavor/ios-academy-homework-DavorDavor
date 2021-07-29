@@ -97,18 +97,26 @@ class RatingsViewController : UIViewController {
 
 extension RatingsViewController {
     func postAComment(rating: Int, comment: String, showId: Int) {
+        
+        let parameters: [String : String] = [
+            "comment": comment,
+            "rating": String(rating),
+            "show_id" : String(showId)
+        ]
+        
         guard let authInfo = authInfo else {return}
         AF .request(
            "https://tv-shows.infinum.academy/reviews",
                 method: .post,
-                parameters: ["rating": rating, "comment": comment, "show_id" : showId],
+                parameters: parameters,
                 headers: HTTPHeaders(authInfo.headers)
             )
             .validate()
             .responseDecodable(of: Review.self) { [weak self] dataResponse in
                switch dataResponse.result {
                case .success(let review):
-                   guard let self = self else {return}
+                    guard let self = self else {return}
+                    self.review = review
                     // navigation back
                     self.dismiss(animated: true, completion: nil)
                case .failure(let error):
