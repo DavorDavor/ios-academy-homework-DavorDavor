@@ -91,7 +91,10 @@ class RatingsViewController : UIViewController {
         guard let id = Int(show.id) else {return}
         // API call
         postAComment(rating: rating, comment: comment, showId: id)
-       
+    }
+    
+    func setAReview(review: Review){
+        self.review = review
     }
 }
 
@@ -112,13 +115,13 @@ extension RatingsViewController {
                 headers: HTTPHeaders(authInfo.headers)
             )
             .validate()
-            .responseDecodable(of: Review.self) { [weak self] dataResponse in
+            .responseDecodable(of: ReviewResponse.self) { [weak self] dataResponse in
                switch dataResponse.result {
-               case .success(let review):
+               case .success(let reviewResponse):
                     guard let self = self else {return}
-                    self.review = review
+                    self.setAReview(review: reviewResponse.review)
                     guard let delegate = self.delegate else {return}
-                    delegate.didAddReview(review: review)
+                    delegate.didAddReview(review: self.review!)
                     // navigation back
                     self.dismiss(animated: true, completion: nil)
                case .failure(let error):
