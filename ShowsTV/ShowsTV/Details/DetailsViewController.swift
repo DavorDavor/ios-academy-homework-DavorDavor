@@ -18,7 +18,7 @@ class DetailsViewController : UIViewController {
     var user:User?
     var authInfo:AuthInfo?
     var show:Show?
-    private var reviews:ReviewsResponse?
+    private var reviews:[Review]?
     
     // MARK: outlets
     
@@ -51,7 +51,7 @@ class DetailsViewController : UIViewController {
             switch dataResponse.result {
             case .success(let reviewsResponse):
                 guard let self = self else {return}
-                self.setReviews(reviews: reviewsResponse)
+                self.setReviews(reviews: reviewsResponse.reviews)
             case .failure(let error):
                 print("Error parsing data: \(error)")
             }
@@ -64,7 +64,7 @@ class DetailsViewController : UIViewController {
     }
 
     
-    func setReviews(reviews:ReviewsResponse){
+    func setReviews(reviews:[Review]){
         self.reviews = reviews
         detailsTableView.reloadData()
     }
@@ -87,9 +87,12 @@ class DetailsViewController : UIViewController {
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let reviews = reviews else {return 0}
-        return 1 + reviews.reviews.count
+        return 1 + reviews.count
     }
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        //if(indexPath.row > 0) {return 100}
+            return UITableView.automaticDimension
+    }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(
@@ -106,7 +109,7 @@ extension DetailsViewController: UITableViewDataSource {
         ) as! ratingsTableViewCell
         guard let reviews = reviews else { return UITableViewCell() }
         
-        cell.configure(with: reviews.reviews[indexPath.row - 1])
+        cell.configure(with: reviews[indexPath.row - 1])
 
         return cell
     }
@@ -133,11 +136,11 @@ extension DetailsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         detailsTableView.deselectRow(at: indexPath, animated: true)
-        guard let show = show else {return}
-        print("Selected Item: \(show)")
     }
 }
 
+
+// MARK: - navigation
 extension DetailsViewController {
     func navigateToReview(user:User, authInfo:AuthInfo, show:Show) {
         
@@ -145,21 +148,20 @@ extension DetailsViewController {
 
         guard let ratingsViewController = storyboard.instantiateViewController(withIdentifier: "RatingsViewController") as? RatingsViewController else {return}
 
-        
-        
        let navigationController = UINavigationController(rootViewController: ratingsViewController)
-
         
+        ratingsViewController.delegate = self
+
         ratingsViewController.setUserResponseAndAuthInfoAndShow(user: user, authInfo: authInfo, show: show)
         
        present(navigationController, animated: true)
         
-        
+    }
+}
 
-        
-        
-//        let backItem = UIBarButtonItem()
-//            backItem.title = "Shows"
-//            navigationItem.backBarButtonItem = backItem
+extension DetailsViewController: RatingsViewControllerDelegate {
+    func didAddReview(review: Review) {
+        reviews?.append(review)
+        detailsTableView.reloadData()
     }
 }

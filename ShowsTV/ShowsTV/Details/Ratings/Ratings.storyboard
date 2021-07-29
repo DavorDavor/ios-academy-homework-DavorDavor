@@ -45,15 +45,18 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" text="Write a comment here..." borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oEW-vH-hEj">
+                                    <textField opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Write a comment here..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="oEW-vH-hEj" userLabel="Review Comment">
                                         <rect key="frame" x="0.0" y="120" width="364" height="200"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="O3r-xL-QAy"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="commentBeingEntered:" destination="Y6W-OH-hqX" eventType="editingChanged" id="pmN-aO-dMx"/>
+                                        </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-MC-kiM">
+                                    <button opaque="NO" alpha="0.59999999999999998" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bnc-MC-kiM">
                                         <rect key="frame" x="0.0" y="320" width="364" height="30"/>
                                         <state key="normal" title="Submit"/>
                                         <userDefinedRuntimeAttributes>
@@ -61,6 +64,9 @@
                                                 <integer key="value" value="30"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="submitAReviewOnClick:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eEz-TG-DHF"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -73,6 +79,11 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="JSw-Rg-Yeu" secondAttribute="trailing" constant="25" id="c9E-qD-5E6"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ratingView" destination="bfx-00-Qw4" id="1Zv-XP-GmZ"/>
+                        <outlet property="reviewComment" destination="oEW-vH-hEj" id="YT0-GG-P1A"/>
+                        <outlet property="submitButton" destination="bnc-MC-kiM" id="CEr-wA-JVr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

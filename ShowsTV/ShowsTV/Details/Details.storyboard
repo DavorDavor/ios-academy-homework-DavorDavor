@@ -24,7 +24,7 @@
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsTableViewCell" rowHeight="500.5" id="FgR-aM-Zi1" customClass="detailsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="500.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FgR-aM-Zi1" id="mE8-2R-klb">
+                                        <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FgR-aM-Zi1" id="mE8-2R-klb">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="500.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
@@ -88,18 +88,17 @@
                                             <outlet property="reviewInfoLabel" destination="gsI-lj-q2c" id="aA1-Tp-rM6"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleAspectFit" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingsTableViewCell" rowHeight="170" id="4Dj-y2-pFf" customClass="ratingsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="525" width="414" height="170"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingsTableViewCell" rowHeight="140" id="4Dj-y2-pFf" customClass="ratingsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="525" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dj-y2-pFf" id="onK-3O-pR1">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="170"/>
+                                        <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dj-y2-pFf" id="onK-3O-pR1">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="140"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="brrb" translatesAutoresizingMaskIntoConstraints="NO" id="rjI-Xg-dwB">
                                                     <rect key="frame" x="20" y="11" width="45" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="8LT-gE-Mz3"/>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="45" id="Vms-mF-21d"/>
                                                         <constraint firstAttribute="width" constant="45" id="jqK-Xz-VAK"/>
                                                     </constraints>
                                                 </imageView>
@@ -112,17 +111,15 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-fJ-WwB" customClass="RatingView" customModule="ShowsTV" customModuleProvider="target">
-                                                    <rect key="frame" x="92" y="52" width="140" height="28"/>
+                                                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lB9-fJ-WwB" customClass="RatingView" customModule="ShowsTV" customModuleProvider="target">
+                                                    <rect key="frame" x="92" y="52" width="140" height="50"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="AWX-f6-MGz"/>
-                                                        <constraint firstAttribute="width" constant="140" id="GXD-Cx-SBT"/>
-                                                        <constraint firstAttribute="height" constant="28" id="uaU-xj-quR"/>
+                                                        <constraint firstAttribute="height" constant="50" id="uaU-xj-quR"/>
                                                     </constraints>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="REVIEW" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-55-DcS">
-                                                    <rect key="frame" x="20" y="78" width="61.5" height="45"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="756" text="REVIEW" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxF-55-DcS">
+                                                    <rect key="frame" x="20" y="100" width="372" height="37"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="vah-a2-02O"/>
                                                     </constraints>
@@ -132,14 +129,17 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="rjI-Xg-dwB" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leadingMargin" id="0yj-Xj-wBg"/>
-                                                <constraint firstItem="lB9-fJ-WwB" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="topMargin" constant="41" id="KZZ-2X-6JO"/>
-                                                <constraint firstItem="gxF-55-DcS" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leadingMargin" id="Ofa-mC-a23"/>
-                                                <constraint firstItem="lB9-fJ-WwB" firstAttribute="top" secondItem="vwC-dQ-OrN" secondAttribute="bottom" constant="8" id="cxa-yD-kHh"/>
-                                                <constraint firstItem="gxF-55-DcS" firstAttribute="top" secondItem="rjI-Xg-dwB" secondAttribute="bottom" constant="22" id="dLG-JE-UVW"/>
-                                                <constraint firstItem="rjI-Xg-dwB" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="topMargin" id="j5s-iA-Jbr"/>
-                                                <constraint firstItem="vwC-dQ-OrN" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leadingMargin" constant="72" id="qNu-u2-Mtl"/>
-                                                <constraint firstItem="lB9-fJ-WwB" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leadingMargin" constant="72" id="zVi-Om-01w"/>
+                                                <constraint firstItem="lB9-fJ-WwB" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leading" constant="92" id="1GV-eN-LqV"/>
+                                                <constraint firstAttribute="trailing" secondItem="rjI-Xg-dwB" secondAttribute="trailing" constant="349" id="30t-5q-3QD"/>
+                                                <constraint firstItem="gxF-55-DcS" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leading" constant="20" id="AwA-4A-Vgf"/>
+                                                <constraint firstItem="gxF-55-DcS" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="top" constant="100" id="WxQ-Gu-wWB"/>
+                                                <constraint firstItem="vwC-dQ-OrN" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leading" constant="92" id="YPd-zt-Dxz"/>
+                                                <constraint firstItem="vwC-dQ-OrN" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="top" constant="23.5" id="eT5-ir-yvf"/>
+                                                <constraint firstAttribute="trailing" secondItem="gxF-55-DcS" secondAttribute="trailing" constant="22" id="iIM-aP-NBH"/>
+                                                <constraint firstItem="rjI-Xg-dwB" firstAttribute="leading" secondItem="onK-3O-pR1" secondAttribute="leading" constant="20" id="jn9-H0-Xdy"/>
+                                                <constraint firstAttribute="bottom" secondItem="gxF-55-DcS" secondAttribute="bottom" constant="3" id="pw2-Hp-S6T"/>
+                                                <constraint firstItem="rjI-Xg-dwB" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="top" constant="11" id="w9D-No-0FS"/>
+                                                <constraint firstItem="lB9-fJ-WwB" firstAttribute="top" secondItem="onK-3O-pR1" secondAttribute="top" constant="52" id="y73-IP-mE8"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
