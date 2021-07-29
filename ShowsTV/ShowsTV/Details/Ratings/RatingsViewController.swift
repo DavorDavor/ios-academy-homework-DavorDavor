@@ -121,6 +121,10 @@ extension RatingsViewController {
                     self.dismiss(animated: true, completion: nil)
                case .failure(let error):
                    print("Error parsing data: \(error)")
+                    guard let self = self else { return }
+                    let alert = UIAlertController(title: "Review posting error", message: "\(error)", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .cancel, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                }
             }
     }
