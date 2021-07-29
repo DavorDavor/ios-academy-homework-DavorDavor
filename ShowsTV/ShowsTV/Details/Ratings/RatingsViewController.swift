@@ -117,6 +117,8 @@ extension RatingsViewController {
                case .success(let review):
                     guard let self = self else {return}
                     self.review = review
+                    guard let delegate = self.delegate else {return}
+                    delegate.didAddReview(review: review)
                     // navigation back
                     self.dismiss(animated: true, completion: nil)
                case .failure(let error):
