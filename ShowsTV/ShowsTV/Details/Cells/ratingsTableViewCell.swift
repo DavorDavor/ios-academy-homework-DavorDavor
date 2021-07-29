@@ -24,6 +24,11 @@ final class ratingsTableViewCell: UITableViewCell {
         setupUI()
     }
 
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.userIDLabel.text = nil
+        self.reviewLabel.text = nil
+    }
 }
 
 // MARK: - Configure
@@ -32,7 +37,6 @@ extension ratingsTableViewCell {
 
     func configure(with review: Review) {
         self.userIDLabel.text = review.user.email
-        self.userIDLabel.sizeToFit()
         self.reviewLabel.text = review.comment
         self.ratingsView.setRoundedRating(review.rating)
         self.ratingsView.isEnabled = false
@@ -42,8 +46,6 @@ extension ratingsTableViewCell {
 // MARK: - Private
 
 private extension ratingsTableViewCell {
-
-    
     
     func setupUI() {
     }

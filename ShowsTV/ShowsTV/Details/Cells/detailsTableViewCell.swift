@@ -22,11 +22,6 @@ final class detailsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         setupUI()
     }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-
-    }
 
 }
 

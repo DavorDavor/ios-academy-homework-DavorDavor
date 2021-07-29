@@ -72,15 +72,16 @@ class RatingsViewController : UIViewController {
     
     // enable submitting on comment being entered
     @IBAction private func commentBeingEntered(_ sender: Any) {
-        guard let comment = reviewComment.text else {
+        guard let comment = reviewComment.text else { return }
+        if comment.isEmpty {
             reviewComment.alpha = 0.6
             submitButton.alpha = 0.6
             submitButton.isEnabled = false
-            return
+        } else {
+            reviewComment.alpha = 1
+            submitButton.isEnabled = true
+            submitButton.alpha = 1
         }
-        reviewComment.alpha = 1
-        submitButton.isEnabled = true
-        submitButton.alpha = 1
     }
     
     @IBAction private func submitAReviewOnClick(_ sender: Any) {
