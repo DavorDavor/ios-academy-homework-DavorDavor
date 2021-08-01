@@ -26,13 +26,15 @@ class DetailsViewController : UIViewController {
     @IBOutlet private weak var detailsTitleLabel: UILabel!
     @IBOutlet private weak var detailsDescriptionLabel: UITableView!
     @IBOutlet private weak var detailsRating: UITableView!
+    @IBOutlet private weak var showTitleLabel: UILabel!
+
     
     
     
     // MARK: functions, API fetching
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = show?.title
+        showTitleLabel.text = show?.title
         let attributes = [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 34, weight: .light)]
         self.navigationController?.navigationBar.titleTextAttributes = attributes
         
@@ -108,7 +110,6 @@ extension DetailsViewController: UITableViewDataSource {
             for: indexPath
         ) as! ratingsTableViewCell
         guard let reviews = reviews else { return UITableViewCell() }
-        
         cell.configure(with: reviews[indexPath.row - 1])
 
         return cell
