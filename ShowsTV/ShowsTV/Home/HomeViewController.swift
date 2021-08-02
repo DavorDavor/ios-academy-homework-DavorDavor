@@ -50,6 +50,22 @@ class HomeViewController : UIViewController {
                 SVProgressHUD.showError(withStatus: "Failure")
             }
          }
+        
+        // Add navigation item
+            let profileDetailsItem = UIBarButtonItem(
+              image: UIImage(named: "ic-profile"),
+              style: .plain,
+     
+     
+            target: self,
+              action: #selector(profileDetailsActionHandler)
+            )
+            profileDetailsItem.tintColor = UIColor.purple
+            navigationItem.rightBarButtonItem = profileDetailsItem
+    }
+    @objc
+    private func profileDetailsActionHandler() {
+        navigateToProfileDetails(user: user, authInfo: authInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,6 +80,12 @@ class HomeViewController : UIViewController {
     func setUserResponseAndAuthInfo(user:User, authInfo:AuthInfo){
         self.user = user
         self.authInfo = authInfo
+    }
+    
+    @IBAction private func navigateToProfileOnClick(_ sender: Any) {
+        guard let user = user else{return}
+        guard let authInfo = authInfo else{return}
+        navigateToProfileDetails(user: user, authInfo: authInfo)
     }
 }
 
@@ -138,5 +160,19 @@ private extension HomeViewController {
             navigationItem.backBarButtonItem = backItem
         
         navigationController?.pushViewController(detailsViewController, animated: true)
+    }
+}
+
+private extension HomeViewController {
+    func navigateToProfileDetails(user:User, authInfo:AuthInfo) {
+        let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
+
+        guard let profileDetailsViewController = storyboard.instantiateViewController(withIdentifier: "ProfileDetailsViewController") as? ProfileDetailsViewController else {return}
+
+       let navigationController = UINavigationController(rootViewController: profileDetailsViewController)
+
+        profileDetailsViewController.setUserResponseAndAuthInfo(user: user, authInfo: authInfo)
+
+       present(navigationController, animated: true)
     }
 }

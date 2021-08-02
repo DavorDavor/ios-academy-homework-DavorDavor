@@ -38,8 +38,8 @@ extension detailsTableViewCell {
         guard let imageUrl = URL(string: imageUrl) else {return}
         showImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
         
-        self.ratingsView.setRoundedRating(show.average_rating)
-        self.ratingsView.isEnabled = false
+        ratingsView.setRoundedRating(show.average_rating)
+        ratingsView.isEnabled = false
     }
 }
 

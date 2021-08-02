@@ -28,8 +28,8 @@ final class ratingsTableViewCell: UITableViewCell {
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.userIDLabel.text = nil
-        self.reviewLabel.text = nil
+        userIDLabel.text = nil
+        reviewLabel.text = nil
     }
 }
 
@@ -38,17 +38,17 @@ final class ratingsTableViewCell: UITableViewCell {
 extension ratingsTableViewCell {
 
     func configure(with review: Review) {
-        self.userIDLabel.text = review.user.email
-        self.ratingsView.configure(withStyle: .small)
+        userIDLabel.text = review.user.email
+        ratingsView.configure(withStyle: .small)
         
-        self.ratingsView.setRoundedRating(review.rating)
-        self.ratingsView.isEnabled = false
-        self.reviewLabel.text = review.comment
+        ratingsView.setRoundedRating(review.rating)
+        ratingsView.isEnabled = false
+        reviewLabel.text = review.comment
         
         
         if let imageUrl = review.user.imageUrl {
         guard let imageUrl = URL(string: imageUrl) else {return}
-        self.userImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-profile-placeholder"))
+        userImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-profile-placeholder"))
         }
     }
 }
