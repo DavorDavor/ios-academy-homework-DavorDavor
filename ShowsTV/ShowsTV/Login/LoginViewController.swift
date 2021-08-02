@@ -160,6 +160,11 @@ private extension LoginViewController {
 // MARK: function to navigate to HomeViewController
 private extension LoginViewController {
     func navigateToHome(user:User, authInfo:AuthInfo) {
+        
+        if rememberMeButton.isSelected {
+            saveToUserDefaults(user: user, authInfo: authInfo)
+        }
+        
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
         guard let homeViewController =         storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
@@ -169,3 +174,18 @@ private extension LoginViewController {
     }
 }
 
+// MARK: function to save user defaults if RememberMe
+
+private extension LoginViewController {
+    func saveToUserDefaults (user: User, authInfo: AuthInfo){
+        // Save
+        let encoder = PropertyListEncoder()
+        if
+            let encodedUser = try? encoder.encode(user),
+            let encodedAuthInfo = try? encoder.encode(authInfo) {
+            UserDefaults.standard.set(encodedUser, forKey: "user")
+            UserDefaults.standard.set(encodedAuthInfo, forKey: "authInfo")
+        }
+        
+    }
+}

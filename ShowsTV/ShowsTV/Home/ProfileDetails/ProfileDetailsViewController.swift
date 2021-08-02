@@ -76,9 +76,8 @@ class ProfileDetailsViewController : UIViewController, UIImagePickerControllerDe
                 name: NotificationLogoutInit,
                 object: nil
             )
-            
-            // clear auth info to be added
-            
+            UserDefaults.standard.removeObject(forKey: "user")
+            UserDefaults.standard.removeObject(forKey: "authInfo")
             NotificationCenter.default.post(notification)
         })
     }

@@ -94,19 +94,19 @@
 				42BB25C726B124CB0079A886 /* Details.storyboard */,
 				42BB25C926B125430079A886 /* DetailsViewController.swift */,
 				42BB25CD26B126E40079A886 /* Review.swift */,
-				42BB25C626B122DB0079A886 /* Reviews */,
+				42BB25C626B122DB0079A886 /* Review */,
 			);
 			path = Details;
 			sourceTree = "<group>";
 		};
-		42BB25C626B122DB0079A886 /* Reviews */ = {
+		42BB25C626B122DB0079A886 /* Review */ = {
 			isa = PBXGroup;
 			children = (
 				42BB25CB26B126390079A886 /* RatingView.swift */,
 				424B39C126B1B7C1003E16B8 /* Review.storyboard */,
 				424B39BF26B1B7B1003E16B8 /* ReviewViewController.swift */,
 			);
-			path = Reviews;
+			path = Review;
 			sourceTree = "<group>";
 		};
 		42BB25CF26B129F70079A886 /* Cells */ = {
