@@ -102,7 +102,8 @@ extension ProfileDetailsViewController {
 
     func storeImage(_ image: UIImage) {
             guard
-                let imageData = image.jpegData(compressionQuality: 0.9)
+                let imageData = image.jpegData(compressionQuality: 0.9),
+                let authInfo = authInfo
             else { return }
             let requestData = MultipartFormData()
             requestData.append(
@@ -116,12 +117,11 @@ extension ProfileDetailsViewController {
         .upload(
             multipartFormData: requestData,
             to: "https://tv-shows.infinum.academy/users",
-            method: .put
+            method: .put,
+            headers: HTTPHeaders(authInfo.headers)
         )
         .validate()
         .responseDecodable(of: UserResponse.self) {
-            //dataResponse in print(dataResponse)
-            
             [weak self] dataResponse in
             switch(dataResponse.result) {
             case .success(let userResponse):
