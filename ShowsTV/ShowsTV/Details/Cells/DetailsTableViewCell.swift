@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-final class detailsTableViewCell: UITableViewCell {
+final class DetailsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
 
@@ -21,33 +21,24 @@ final class detailsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupUI()
     }
-
 }
 
 // MARK: - Configure
 
-extension detailsTableViewCell {
+extension DetailsTableViewCell {
 
     func configure(with show: Show) {
         descriptionLabel.text = show.description
-        reviewInfoLabel.text = String(show.no_of_reviews) + " REVIEWS, " + String(show.average_rating) + " AVERAGE"
+        reviewInfoLabel.text = String(show.noOfReviews) + " REVIEWS, " + String(show.averageRating) + " AVERAGE"
         
-        guard let imageUrl = show.image_url else { return }
+        guard let imageUrl = show.imageUrl else { return }
         guard let imageUrl = URL(string: imageUrl) else {return}
         showImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
         
-        ratingsView.setRoundedRating(show.average_rating)
+        ratingsView.setRoundedRating(show.averageRating)
         ratingsView.isEnabled = false
     }
 }
 
-// MARK: - Private
 
-private extension detailsTableViewCell {
-
-    func setupUI() {
-        
-    }
-}

@@ -7,6 +7,8 @@
 
 import UIKit
 
+let NotificationLogoutInit = Notification.Name(rawValue: "NotificationLogoutInit")
+
 class ProfileDetailsViewController : UIViewController {
 
 
@@ -35,8 +37,7 @@ class ProfileDetailsViewController : UIViewController {
 
 
     @objc private func didSelectClose() {
-        // programatically dismiss view controller
-        dismiss(animated: true, completion: nil) // push <-> pop; present <->dismiss
+        dismiss(animated: true, completion: nil)
     }
 
     // hide navigation bar
@@ -55,11 +56,15 @@ class ProfileDetailsViewController : UIViewController {
     }
     
     @IBAction private func logoutOnClick(_ sender: Any) {
-        let storyboard = UIStoryboard(name: "Login", bundle: nil)
-
-        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
-        
-        navigationController?.pushViewController(loginViewController, animated: true)
+        dismiss(animated: true, completion: {
+            let notification = Notification(
+                name: NotificationLogoutInit,
+                object: nil
+            )
+            
+            // clear auth info to be added
+            
+            NotificationCenter.default.post(notification)
+        })
     }
-
 }

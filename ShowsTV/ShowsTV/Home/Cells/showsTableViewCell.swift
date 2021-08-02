@@ -33,7 +33,7 @@ extension showsTableViewCell {
 
     func configure(with show: Show) {
         titleLabel.text = show.title
-        guard let imageUrl = show.image_url else { return }
+        guard let imageUrl = show.imageUrl else { return }
         guard let imageUrl = URL(string: imageUrl) else {return}
         showImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-show-placeholder-vertical"))
     }

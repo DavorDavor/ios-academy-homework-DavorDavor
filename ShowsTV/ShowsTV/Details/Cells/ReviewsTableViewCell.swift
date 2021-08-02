@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-final class ratingsTableViewCell: UITableViewCell {
+final class ReviewsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
     
@@ -23,7 +23,6 @@ final class ratingsTableViewCell: UITableViewCell {
     // MARK: - Lifecycle
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupUI()
     }
 
     override func prepareForReuse() {
@@ -35,7 +34,7 @@ final class ratingsTableViewCell: UITableViewCell {
 
 // MARK: - Configure
 
-extension ratingsTableViewCell {
+extension ReviewsTableViewCell {
 
     func configure(with review: Review) {
         userIDLabel.text = review.user.email
@@ -53,10 +52,3 @@ extension ratingsTableViewCell {
     }
 }
 
-// MARK: - Private
-
-private extension ratingsTableViewCell {
-    
-    func setupUI() {
-    }
-}

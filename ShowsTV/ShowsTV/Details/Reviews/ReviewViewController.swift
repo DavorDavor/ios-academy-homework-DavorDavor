@@ -10,19 +10,18 @@ import SVProgressHUD
 import Alamofire
 import UIKit
 
-protocol RatingsViewControllerDelegate: AnyObject {
+protocol ReviewViewControllerDelegate: AnyObject {
     func didAddReview(review: Review)
 }
 
-class RatingsViewController : UIViewController {
+class ReviewViewController : UIViewController {
     
     
     // MARK: properties
     var user:User?
     var authInfo:AuthInfo?
     var show:Show?
-    private var review:Review?
-    weak var delegate: RatingsViewControllerDelegate?
+    weak var delegate: ReviewViewControllerDelegate?
 
     
     // MARK: outlets
@@ -39,7 +38,7 @@ class RatingsViewController : UIViewController {
         
         self.title = "Write a Review"
         if let show = show {
-            self.ratingView.setRoundedRating(show.average_rating)
+            self.ratingView.setRoundedRating(show.averageRating)
         }
 
         navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -59,6 +58,7 @@ class RatingsViewController : UIViewController {
     
     // hide navigation bar
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -92,13 +92,9 @@ class RatingsViewController : UIViewController {
         // API call
         postAComment(rating: rating, comment: comment, showId: id)
     }
-    
-    func setAReview(review: Review){
-        self.review = review
-    }
 }
 
-extension RatingsViewController {
+extension ReviewViewController {
     func postAComment(rating: Int, comment: String, showId: Int) {
         
         let parameters: [String : String] = [
@@ -119,9 +115,8 @@ extension RatingsViewController {
                switch dataResponse.result {
                case .success(let reviewResponse):
                     guard let self = self else {return}
-                    self.setAReview(review: reviewResponse.review)
                     guard let delegate = self.delegate else {return}
-                    delegate.didAddReview(review: self.review!)
+                    delegate.didAddReview(review: reviewResponse.review)
                     // navigation back
                     self.dismiss(animated: true, completion: nil)
                case .failure(let error):

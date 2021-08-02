@@ -13,7 +13,6 @@ import UIKit
 
 class DetailsViewController : UIViewController {
     
-    
     // MARK: properties
     var user:User?
     var authInfo:AuthInfo?
@@ -28,10 +27,8 @@ class DetailsViewController : UIViewController {
     @IBOutlet private weak var detailsRating: UITableView!
     @IBOutlet private weak var showTitleLabel: UILabel!
 
-    
-    
-    
     // MARK: functions, API fetching
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         showTitleLabel.text = show?.title
@@ -60,8 +57,8 @@ class DetailsViewController : UIViewController {
          }
     }
     
-    // hide navigation bar
     override func viewWillAppear(_ animated: Bool) {
+        // hide navigation bar
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -86,29 +83,29 @@ class DetailsViewController : UIViewController {
 }
 
 // MARK: - table view row and cell setup
+
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let reviews = reviews else {return 0}
         return 1 + reviews.count
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        //if(indexPath.row > 0) {return 100}
-            return UITableView.automaticDimension
+        return UITableView.automaticDimension
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if(indexPath.row == 0) {
             let cell = tableView.dequeueReusableCell(
-                withIdentifier: String(describing: detailsTableViewCell.self),
+                withIdentifier: String(describing: DetailsTableViewCell.self),
                 for: indexPath
-            ) as! detailsTableViewCell
+            ) as! DetailsTableViewCell
             cell.configure(with: show!)
             
             return cell
         }
         let cell = tableView.dequeueReusableCell(
-            withIdentifier: String(describing: ratingsTableViewCell.self),
+            withIdentifier: String(describing: ReviewsTableViewCell.self),
             for: indexPath
-        ) as! ratingsTableViewCell
+        ) as! ReviewsTableViewCell
         guard let reviews = reviews else { return UITableViewCell() }
         cell.configure(with: reviews[indexPath.row - 1])
 
@@ -142,25 +139,26 @@ extension DetailsViewController: UITableViewDelegate {
 
 
 // MARK: - navigation
+
 extension DetailsViewController {
     func navigateToReview(user:User, authInfo:AuthInfo, show:Show) {
         
-        let storyboard = UIStoryboard(name: "Ratings", bundle: nil)
+        let storyboard = UIStoryboard(name: "Review", bundle: nil)
 
-        guard let ratingsViewController = storyboard.instantiateViewController(withIdentifier: "RatingsViewController") as? RatingsViewController else {return}
+        guard let reviewViewController = storyboard.instantiateViewController(withIdentifier: "ReviewViewController") as? ReviewViewController else {return}
 
-       let navigationController = UINavigationController(rootViewController: ratingsViewController)
+       let navigationController = UINavigationController(rootViewController: reviewViewController)
         
-        ratingsViewController.delegate = self
+        reviewViewController.delegate = self
 
-        ratingsViewController.setUserResponseAndAuthInfoAndShow(user: user, authInfo: authInfo, show: show)
+        reviewViewController.setUserResponseAndAuthInfoAndShow(user: user, authInfo: authInfo, show: show)
         
        present(navigationController, animated: true)
         
     }
 }
 
-extension DetailsViewController: RatingsViewControllerDelegate {
+extension DetailsViewController: ReviewViewControllerDelegate {
     func didAddReview(review: Review) {
         reviews?.append(review)
         detailsTableView.reloadData()

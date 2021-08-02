@@ -8,17 +8,26 @@
 import Foundation
 
 
-struct ShowsResponse : Codable {
+struct ShowsResponse: Codable {
     let shows: [Show]
 }
 
-struct Show : Codable {
+struct Show: Codable {
     let id:String
-    let average_rating:Double
+    let averageRating:Double
     let description:String
-    let image_url:String?
-    let no_of_reviews:Int
+    let imageUrl:String?
+    let noOfReviews:Int
     let title:String
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case averageRating = "average_rating"
+        case description
+        case imageUrl = "image_url"
+        case noOfReviews = "no_of_reviews"
+        case title
+    }
 }
 
 

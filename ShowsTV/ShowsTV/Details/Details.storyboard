@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="124" width="414" height="658"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="detailsTableViewCell" rowHeight="367" id="FgR-aM-Zi1" customClass="detailsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="DetailsTableViewCell" rowHeight="367" id="FgR-aM-Zi1" userLabel="DetailsTableViewCell" customClass="DetailsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="24.5" width="414" height="367"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="FgR-aM-Zi1" id="mE8-2R-klb">
@@ -121,13 +121,13 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="descriptionLabel" destination="0bA-wG-8Dz" id="0DM-E9-gnb"/>
-                                            <outlet property="ratingsView" destination="1e0-aA-zhp" id="o0i-xp-7XM"/>
-                                            <outlet property="reviewInfoLabel" destination="gsI-lj-q2c" id="aA1-Tp-rM6"/>
-                                            <outlet property="showImageView" destination="hEk-FT-JsC" id="LRT-15-rf5"/>
+                                            <outlet property="descriptionLabel" destination="0bA-wG-8Dz" id="kgl-Sa-7Pq"/>
+                                            <outlet property="ratingsView" destination="1e0-aA-zhp" id="FiB-6k-who"/>
+                                            <outlet property="reviewInfoLabel" destination="gsI-lj-q2c" id="sq1-XQ-58Q"/>
+                                            <outlet property="showImageView" destination="hEk-FT-JsC" id="aKx-HW-1hR"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ratingsTableViewCell" rowHeight="140" id="4Dj-y2-pFf" customClass="ratingsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewsTableViewCell" rowHeight="140" id="4Dj-y2-pFf" userLabel="ReviewsTableViewCell" customClass="ReviewsTableViewCell" customModule="ShowsTV" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="391.5" width="414" height="140"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" autoresizesSubviews="NO" opaque="NO" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4Dj-y2-pFf" id="onK-3O-pR1">
@@ -183,10 +183,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="ratingsView" destination="lB9-fJ-WwB" id="4ZA-Gc-Xwf"/>
-                                            <outlet property="reviewLabel" destination="gxF-55-DcS" id="NJS-ME-0v8"/>
-                                            <outlet property="userIDLabel" destination="vwC-dQ-OrN" id="8Ui-8W-68b"/>
-                                            <outlet property="userImageView" destination="rjI-Xg-dwB" id="Aca-xh-irC"/>
+                                            <outlet property="ratingsView" destination="lB9-fJ-WwB" id="CBq-9I-nZd"/>
+                                            <outlet property="reviewLabel" destination="gxF-55-DcS" id="Ihf-h5-oPI"/>
+                                            <outlet property="userIDLabel" destination="vwC-dQ-OrN" id="ymI-lz-Mwn"/>
+                                            <outlet property="userImageView" destination="rjI-Xg-dwB" id="Xop-Or-4sP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

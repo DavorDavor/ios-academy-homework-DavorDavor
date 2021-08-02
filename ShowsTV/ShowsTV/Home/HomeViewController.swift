@@ -15,9 +15,12 @@ class HomeViewController : UIViewController {
     
     
     // MARK: properties
-    var user:User?
-    var authInfo:AuthInfo?
-    var shows:ShowsResponse?
+    var user: User?
+    var authInfo: AuthInfo?
+    var shows: [Show] = []
+    var notificationToken: NSObjectProtocol?
+    var profileDetailsViewController: ProfileDetailsViewController?
+
     
     // MARK: outlets
     
@@ -32,24 +35,24 @@ class HomeViewController : UIViewController {
 
         SVProgressHUD.show()
         setupTableView()
-     AF .request(
-             "https://tv-shows.infinum.academy/shows",
-             method: .get,
-             parameters: ["page": "1", "items": "100"], // pagination arguments
-             headers: HTTPHeaders(authInfo.headers)
-         )
-         .validate()
-         .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
-            switch dataResponse.result {
-            case .success(let showsResponse):
-                guard let self = self else {return}
-                self.setShows(shows: showsResponse)
-                SVProgressHUD.showSuccess(withStatus: "Success")
-            case .failure(let error):
-                print("Error parsing data: \(error)")
-                SVProgressHUD.showError(withStatus: "Failure")
-            }
-         }
+         AF .request(
+                 "https://tv-shows.infinum.academy/shows",
+                 method: .get,
+                 parameters: ["page": "1", "items": "100"], // pagination arguments
+                 headers: HTTPHeaders(authInfo.headers)
+             )
+             .validate()
+             .responseDecodable(of: ShowsResponse.self) { [weak self] dataResponse in
+                switch dataResponse.result {
+                case .success(let showsResponse):
+                    guard let self = self else {return}
+                    self.setShows(shows: showsResponse)
+                    SVProgressHUD.showSuccess(withStatus: "Success")
+                case .failure(let error):
+                    print("Error parsing data: \(error)")
+                    SVProgressHUD.showError(withStatus: "Failure")
+                }
+             }
         
         // Add navigation item
             let profileDetailsItem = UIBarButtonItem(
@@ -62,19 +65,44 @@ class HomeViewController : UIViewController {
             )
             profileDetailsItem.tintColor = UIColor.purple
             navigationItem.rightBarButtonItem = profileDetailsItem
-    }
+        
+            // Notification for logout
+            notificationToken = NotificationCenter
+                .default
+                .addObserver(
+                    forName: NotificationLogoutInit,
+                    object: nil,
+                    queue: nil,
+                    using: { [weak self] notification in
+                        self?.logoutOnNotification()
+                    }
+                )
+        }
+
+        deinit {
+            NotificationCenter.default.removeObserver(notificationToken!)
+        }
+    
+    
     @objc
     private func profileDetailsActionHandler() {
+        guard
+            let user = user,
+            let authInfo = authInfo
+        else {return}
         navigateToProfileDetails(user: user, authInfo: authInfo)
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
+        super.viewWillAppear(true)
+        self.navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationItem.setHidesBackButton(true, animated: true)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()    }
     
     
     func setShows(shows:ShowsResponse){
-        self.shows = shows
+        self.shows = shows.shows
         showsTableView.reloadData()
     }
     func setUserResponseAndAuthInfo(user:User, authInfo:AuthInfo){
@@ -83,8 +111,10 @@ class HomeViewController : UIViewController {
     }
     
     @IBAction private func navigateToProfileOnClick(_ sender: Any) {
-        guard let user = user else{return}
-        guard let authInfo = authInfo else{return}
+        guard
+            let user = user,
+            let authInfo = authInfo
+        else {return}
         navigateToProfileDetails(user: user, authInfo: authInfo)
     }
 }
@@ -94,11 +124,11 @@ extension HomeViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         showsTableView.deselectRow(at: indexPath, animated: true)
-        guard let shows = shows else {return}
-        guard let user = user else {return}
-        guard let authInfo = authInfo else {return}
-        let show = shows.shows[indexPath.row]
-        navigateToDetails(user: user, authInfo: authInfo, show: show)
+        guard
+            let user = user,
+            let authInfo = authInfo
+        else {return}
+        navigateToDetails(user: user, authInfo: authInfo, show: shows[indexPath.row])
     }
 }
 
@@ -113,8 +143,7 @@ extension HomeViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-          guard let shows = shows else {return 0}
-          return shows.shows.count
+          return shows.count
       }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -125,7 +154,7 @@ extension HomeViewController: UITableViewDataSource {
             for: indexPath
         ) as! showsTableViewCell
 
-        cell.configure(with: shows!.shows[indexPath.row])
+        cell.configure(with: shows[indexPath.row])
 
         return cell
     }
@@ -148,7 +177,7 @@ private extension HomeViewController {
 
 // MARK: - Navigate to Details
 private extension HomeViewController {
-    func navigateToDetails(user:User, authInfo:AuthInfo, show:Show) {
+    func navigateToDetails(user: User, authInfo: AuthInfo, show: Show) {
         let storyboard = UIStoryboard(name: "Details", bundle: nil)
 
         guard let detailsViewController = storyboard.instantiateViewController(withIdentifier: "DetailsViewController") as? DetailsViewController else {return}
@@ -163,6 +192,8 @@ private extension HomeViewController {
     }
 }
 
+// MARK: - Navigate to ProfileDetails
+
 private extension HomeViewController {
     func navigateToProfileDetails(user:User, authInfo:AuthInfo) {
         let storyboard = UIStoryboard(name: "ProfileDetails", bundle: nil)
@@ -174,5 +205,17 @@ private extension HomeViewController {
         profileDetailsViewController.setUserResponseAndAuthInfo(user: user, authInfo: authInfo)
 
        present(navigationController, animated: true)
+    }
+}
+
+// MARK: - Logout when notified
+
+private extension HomeViewController {
+    func logoutOnNotification() {
+        let storyboard = UIStoryboard(name: "Login", bundle: nil)
+
+        guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}
+
+        navigationController?.pushViewController(loginViewController, animated: true)
     }
 }
