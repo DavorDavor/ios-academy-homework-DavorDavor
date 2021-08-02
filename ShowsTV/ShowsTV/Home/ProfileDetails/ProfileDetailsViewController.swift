@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 let NotificationLogoutInit = Notification.Name(rawValue: "NotificationLogoutInit")
 
@@ -18,14 +19,21 @@ class ProfileDetailsViewController : UIViewController {
 
 
     // MARK: outlets
-
-
+    @IBOutlet private weak var usernameLabel: UILabel!
+    @IBOutlet private weak var profileImageView: UIImageView!
+    @IBOutlet private weak var reviewInfoLabel: UILabel!
 
     // MARK: functions, API fetching
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "My Account"
+        usernameLabel.text = user?.email
+        
+        if let imageUrl = user?.imageUrl {
+        guard let imageUrl = URL(string: imageUrl) else {return}
+        profileImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-profile-placeholder"))
+        }
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "Close",
