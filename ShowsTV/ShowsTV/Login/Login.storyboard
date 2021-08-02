@@ -78,7 +78,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
+                                                <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -94,7 +94,7 @@
                                         </state>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                <integer key="value" value="5"/>
+                                                <integer key="value" value="15"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
@@ -142,12 +142,6 @@
                                         <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yll-b3-RV2" userLabel="StatusLabel">
-                                        <rect key="frame" x="207" y="598" width="0.0" height="0.0"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <color key="highlightedColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6Zi-GF-vjD" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="21" id="0nV-Va-LRe"/>
@@ -156,7 +150,6 @@
                                     <constraint firstItem="ZOL-6p-WC8" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" id="4dz-5o-lfL"/>
                                     <constraint firstItem="p2v-b6-kaz" firstAttribute="leading" secondItem="mx5-1o-Sx0" secondAttribute="trailing" constant="8" symbolic="YES" id="4gY-g7-i2e"/>
                                     <constraint firstItem="ITh-Yk-WpB" firstAttribute="top" secondItem="6Zi-GF-vjD" secondAttribute="bottom" constant="8" symbolic="YES" id="6Xx-JP-fju"/>
-                                    <constraint firstItem="yll-b3-RV2" firstAttribute="centerY" secondItem="yN1-Yb-JYh" secondAttribute="centerY" constant="150" id="95H-xo-JGb"/>
                                     <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="9IM-PQ-5Fj"/>
                                     <constraint firstItem="gai-Jr-rOz" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="AMk-1S-bFf"/>
                                     <constraint firstItem="mx5-1o-Sx0" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="DVH-fI-2Tz"/>
@@ -174,7 +167,6 @@
                                     <constraint firstItem="1tr-d9-XF1" firstAttribute="top" secondItem="gai-Jr-rOz" secondAttribute="bottom" constant="21" id="Wg5-Bk-ry7"/>
                                     <constraint firstItem="mx5-1o-Sx0" firstAttribute="top" secondItem="WIo-2o-SMH" secondAttribute="bottom" constant="8" symbolic="YES" id="ZS9-mj-K2f"/>
                                     <constraint firstItem="65i-jX-bwh" firstAttribute="top" secondItem="yN1-Yb-JYh" secondAttribute="top" id="dH4-3B-Vsw"/>
-                                    <constraint firstItem="yll-b3-RV2" firstAttribute="centerX" secondItem="yN1-Yb-JYh" secondAttribute="centerX" id="gWd-dX-jhz"/>
                                     <constraint firstItem="p4c-Kj-Vfs" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="137" id="ir9-1B-EmF"/>
                                     <constraint firstAttribute="trailing" secondItem="WIo-2o-SMH" secondAttribute="trailing" constant="26" id="ksT-lb-isY"/>
                                     <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="mga-Pq-AvA"/>
@@ -205,28 +197,11 @@
                         <outlet property="emailTextField" destination="krs-Pd-Ddz" id="Woi-pT-guV"/>
                         <outlet property="passwordTextField" destination="J8V-2F-Hce" id="vHG-9o-hsD"/>
                         <outlet property="rememberMeButton" destination="mx5-1o-Sx0" id="RG0-yd-lVn"/>
-                        <outlet property="statusLabel" destination="yll-b3-RV2" id="6eb-g4-U7o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1042.0289855072465" y="59.598214285714285"/>
-        </scene>
-        <!--Home View Controller-->
-        <scene sceneID="deE-Ma-bUR">
-            <objects>
-                <viewController id="eTc-ER-Ox7" customClass="HomeViewController" customModule="ShowsTV" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="7Ig-1K-Ta1">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="vuD-yd-HGl"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="Xmj-Eu-cxT"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="eVa-gZ-y3X" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1877" y="78"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="PQS-ew-He8">
