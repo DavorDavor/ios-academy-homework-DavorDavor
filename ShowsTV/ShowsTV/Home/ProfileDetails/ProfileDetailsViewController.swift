@@ -6,16 +6,18 @@
 //
 
 import UIKit
+import Alamofire
 import Kingfisher
 
 let NotificationLogoutInit = Notification.Name(rawValue: "NotificationLogoutInit")
 
-class ProfileDetailsViewController : UIViewController {
+class ProfileDetailsViewController : UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
 
     // MARK: properties
     var user:User?
     var authInfo:AuthInfo?
+    let imagePicker = UIImagePickerController()
 
 
     // MARK: outlets
@@ -29,6 +31,7 @@ class ProfileDetailsViewController : UIViewController {
         
         self.title = "My Account"
         usernameLabel.text = user?.email
+        imagePicker.delegate = self
         
         if let imageUrl = user?.imageUrl {
         guard let imageUrl = URL(string: imageUrl) else {return}
@@ -61,6 +64,10 @@ class ProfileDetailsViewController : UIViewController {
     }
 
     @IBAction private func browseImageOnClick(_ sender: Any) {
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        
+        present(imagePicker, animated: true)
     }
     
     @IBAction private func logoutOnClick(_ sender: Any) {
@@ -74,5 +81,65 @@ class ProfileDetailsViewController : UIViewController {
             
             NotificationCenter.default.post(notification)
         })
+    }
+}
+
+
+// MARK: - UIImagePickerControllerDelegate Methods
+extension ProfileDetailsViewController {
+    
+    // picking delegation
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            profileImageView.contentMode = .scaleAspectFit
+            profileImageView.image = pickedImage
+        }
+        guard let image = profileImageView.image else {return}
+        storeImage(image)
+        
+        dismiss(animated: true, completion: nil)
+    }
+
+    func storeImage(_ image: UIImage) {
+            guard
+                let imageData = image.jpegData(compressionQuality: 0.9)
+            else { return }
+            let requestData = MultipartFormData()
+            requestData.append(
+                imageData,
+                withName: "image",
+                fileName: "image.jpg",
+                mimeType: "image/jpg"
+            )
+
+        AF
+        .upload(
+            multipartFormData: requestData,
+            to: "https://tv-shows.infinum.academy/users",
+            method: .put
+        )
+        .validate()
+        .responseDecodable(of: UserResponse.self) {
+            //dataResponse in print(dataResponse)
+            
+            [weak self] dataResponse in
+            switch(dataResponse.result) {
+            case .success(let userResponse):
+                if let imageUrl = userResponse.user.imageUrl {
+                    guard
+                        let self = self,
+                        let imageUrl = URL(string: imageUrl)
+                    else {return}
+                    self.profileImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-profile-placeholder"))
+                }
+            case .failure(let error):
+                print(error)
+            }
+        }
+     }
+    
+    // cancel functionality
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: nil)
     }
 }
