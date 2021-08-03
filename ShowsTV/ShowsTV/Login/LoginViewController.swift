@@ -15,6 +15,8 @@ class LoginViewController : UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var registerButton: UIButton!
     
     // MARK: - Properties
     
@@ -39,7 +41,7 @@ class LoginViewController : UIViewController {
     }
     
     // triggers login API call, pushes to Home on success
-    @IBAction private func loginOnClick(_ sender: Any) {
+    @IBAction private func loginOnClick(_ sender: UIButton) {
         
         // Check if fields empty
         guard
@@ -51,11 +53,16 @@ class LoginViewController : UIViewController {
             
             return
         }
+        
+        sender.pulse()
+        
         loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     // triggers register and login API call, pushes to Home on success
-    @IBAction private func registerOnClick(_ sender: Any) {
+    @IBAction private func registerOnClick(_ sender: UIButton) {
+        
+        sender.pulse()
         
         // Check if fields empty
         guard

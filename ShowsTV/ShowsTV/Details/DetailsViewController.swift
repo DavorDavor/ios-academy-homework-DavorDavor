@@ -74,7 +74,7 @@ class DetailsViewController : UIViewController {
         self.show = show
     }
     
-    @IBAction private func writeAReviewOnClick(_ sender: Any) {
+    @IBAction private func writeAReviewOnClick(_ sender: UIButton) {
         guard let user = user else{return}
         guard let show = show else{return}
         guard let authInfo = authInfo else{return}
@@ -133,7 +133,18 @@ private extension DetailsViewController {
 extension DetailsViewController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard
+            let cell = tableView.cellForRow(at: indexPath)
+        else {return}
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.3
+        flash.fromValue = 1
+        flash.toValue = 0.1
+        flash.autoreverses = true
+        flash.repeatCount = 1
+        cell.layer.add(flash, forKey: nil)
         detailsTableView.deselectRow(at: indexPath, animated: true)
+
     }
 }
 
@@ -160,7 +171,7 @@ extension DetailsViewController {
 
 extension DetailsViewController: ReviewViewControllerDelegate {
     func didAddReview(review: Review) {
-        reviews?.append(review)
+        reviews?.insert(review, at: 0)
         detailsTableView.reloadData()
     }
 }

@@ -90,6 +90,7 @@ class HomeViewController : UIViewController {
             let user = user,
             let authInfo = authInfo
         else {return}
+        
         navigateToProfileDetails(user: user, authInfo: authInfo)
     }
     
@@ -128,6 +129,7 @@ extension HomeViewController: UITableViewDelegate {
             let user = user,
             let authInfo = authInfo
         else {return}
+        
         navigateToDetails(user: user, authInfo: authInfo, show: shows[indexPath.row])
     }
 }
@@ -157,6 +159,17 @@ extension HomeViewController: UITableViewDataSource {
         cell.configure(with: shows[indexPath.row])
 
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+
+        UIView.animate(
+            withDuration: 0.5,
+            delay: 0.1 * Double(indexPath.row),
+            animations: {
+                cell.alpha = 1
+        })
     }
 }
 
@@ -212,6 +225,7 @@ private extension HomeViewController {
 
 private extension HomeViewController {
     func logoutOnNotification() {
+        NotificationCenter.default.removeObserver(notificationToken!)
         let storyboard = UIStoryboard(name: "Login", bundle: nil)
 
         guard let loginViewController = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as? LoginViewController else {return}

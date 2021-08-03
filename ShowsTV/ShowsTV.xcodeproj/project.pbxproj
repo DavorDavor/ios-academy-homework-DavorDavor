@@ -26,6 +26,7 @@
 		42D90C9C26A706EF00A028E5 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42D90C9B26A706EF00A028E5 /* Home.storyboard */; };
 		42F20B5926B7273A00019042 /* ProfileDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F20B5826B7273A00019042 /* ProfileDetails.storyboard */; };
 		42F20B5B26B7274A00019042 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20B5A26B7274A00019042 /* ProfileDetailsViewController.swift */; };
+		42F20B5D26B992A300019042 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20B5C26B992A200019042 /* UIButtonExtensions.swift */; };
 		42F4877B26A80009000C039C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4877A26A80009000C039C /* User.swift */; };
 		67CA1AB4CD9B53454495FD5D /* Pods_ShowsTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3214BB3F346C8F9D011A6ADC /* Pods_ShowsTV.framework */; };
 /* End PBXBuildFile section */
@@ -53,6 +54,7 @@
 		42D90C9B26A706EF00A028E5 /* Home.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
 		42F20B5826B7273A00019042 /* ProfileDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDetails.storyboard; sourceTree = "<group>"; };
 		42F20B5A26B7274A00019042 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
+		42F20B5C26B992A200019042 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
 		42F4877A26A80009000C039C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		68A03677CBE3DA27AD55306E /* Pods-ShowsTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsTV.release.xcconfig"; path = "Target Support Files/Pods-ShowsTV/Pods-ShowsTV.release.xcconfig"; sourceTree = "<group>"; };
 		D2EA53DC471030FA9422975B /* Pods-ShowsTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsTV.debug.xcconfig"; path = "Target Support Files/Pods-ShowsTV/Pods-ShowsTV.debug.xcconfig"; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				42D90C9626A6C3FC00A028E5 /* Assets.xcassets */,
 				42BDD2E2269EC49000501E11 /* LaunchScreen.storyboard */,
 				42BDD2E5269EC49000501E11 /* Info.plist */,
+				42F20B5C26B992A200019042 /* UIButtonExtensions.swift */,
 			);
 			path = ShowsTV;
 			sourceTree = "<group>";
@@ -320,6 +323,7 @@
 				42BB25CA26B125430079A886 /* DetailsViewController.swift in Sources */,
 				42BB25C426B052750079A886 /* showsTableViewCell.swift in Sources */,
 				42D90C9926A706AF00A028E5 /* HomeViewController.swift in Sources */,
+				42F20B5D26B992A300019042 /* UIButtonExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

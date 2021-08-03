@@ -70,7 +70,8 @@ class ProfileDetailsViewController : UIViewController, UIImagePickerControllerDe
         present(imagePicker, animated: true)
     }
     
-    @IBAction private func logoutOnClick(_ sender: Any) {
+    @IBAction private func logoutOnClick(_ sender: UIButton) {
+        sender.pulse()
         dismiss(animated: true, completion: {
             let notification = Notification(
                 name: NotificationLogoutInit,
