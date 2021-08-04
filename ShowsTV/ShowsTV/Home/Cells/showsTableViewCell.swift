@@ -4,12 +4,14 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class showsTableViewCell: UITableViewCell {
 
     // MARK: - Private UI
 
     @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var showImageView: UIImageView!
 
     // MARK: - Lifecycle
     override func awakeFromNib() {
@@ -29,8 +31,9 @@ final class showsTableViewCell: UITableViewCell {
 
 extension showsTableViewCell {
 
-    func configure(with item: Show) {
-        titleLabel.text = item.title
+    func configure(with show: Show) {
+        titleLabel.text = show.title
+        showImageView.kf.setImage(with: show.imageUrl, placeholder: UIImage(named: "ic-show-placeholder-vertical"))
     }
 }
 

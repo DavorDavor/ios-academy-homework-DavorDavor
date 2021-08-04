@@ -130,25 +130,28 @@
                                             <action selector="showPassword:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="zv9-Km-gCt"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remember me" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2v-b6-kaz" userLabel="RememberMeLabel">
-                                        <rect key="frame" x="54" y="414" width="94" height="17"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <color key="textColor" systemColor="systemBackgroundColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Zi-GF-vjD" userLabel="Title">
                                         <rect key="frame" x="21" y="206" width="91.5" height="41"/>
                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="34"/>
                                         <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eRl-9K-ium">
+                                        <rect key="frame" x="58" y="405" width="112" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <state key="normal" title="Remember Me">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="rememberMe:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="AG6-zT-kPa"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="6Zi-GF-vjD" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="21" id="0nV-Va-LRe"/>
                                     <constraint firstAttribute="trailing" secondItem="XjC-Vp-9x4" secondAttribute="trailing" constant="26" id="1QS-A9-3we"/>
                                     <constraint firstItem="ITh-Yk-WpB" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="19" id="3ow-Q9-8Kr"/>
                                     <constraint firstItem="ZOL-6p-WC8" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" id="4dz-5o-lfL"/>
-                                    <constraint firstItem="p2v-b6-kaz" firstAttribute="leading" secondItem="mx5-1o-Sx0" secondAttribute="trailing" constant="8" symbolic="YES" id="4gY-g7-i2e"/>
                                     <constraint firstItem="ITh-Yk-WpB" firstAttribute="top" secondItem="6Zi-GF-vjD" secondAttribute="bottom" constant="8" symbolic="YES" id="6Xx-JP-fju"/>
                                     <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="9IM-PQ-5Fj"/>
                                     <constraint firstItem="gai-Jr-rOz" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="AMk-1S-bFf"/>
@@ -158,6 +161,7 @@
                                     <constraint firstAttribute="trailing" secondItem="1tr-d9-XF1" secondAttribute="trailing" constant="38" id="GYD-VV-Jaa"/>
                                     <constraint firstItem="cjT-dC-QhI" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="HUp-eA-xji"/>
                                     <constraint firstItem="krs-Pd-Ddz" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="IKl-1m-YCO"/>
+                                    <constraint firstItem="eRl-9K-ium" firstAttribute="top" secondItem="WIo-2o-SMH" secondAttribute="bottom" constant="1" id="OjF-DK-XrL"/>
                                     <constraint firstItem="p4c-Kj-Vfs" firstAttribute="top" secondItem="yN1-Yb-JYh" secondAttribute="top" constant="108" id="Oxh-rB-IBN"/>
                                     <constraint firstItem="gai-Jr-rOz" firstAttribute="top" secondItem="krs-Pd-Ddz" secondAttribute="bottom" constant="1" id="PfM-9h-xuT"/>
                                     <constraint firstItem="WIo-2o-SMH" firstAttribute="top" secondItem="J8V-2F-Hce" secondAttribute="bottom" constant="6" id="SOK-Qk-LLS"/>
@@ -167,11 +171,11 @@
                                     <constraint firstItem="1tr-d9-XF1" firstAttribute="top" secondItem="gai-Jr-rOz" secondAttribute="bottom" constant="21" id="Wg5-Bk-ry7"/>
                                     <constraint firstItem="mx5-1o-Sx0" firstAttribute="top" secondItem="WIo-2o-SMH" secondAttribute="bottom" constant="8" symbolic="YES" id="ZS9-mj-K2f"/>
                                     <constraint firstItem="65i-jX-bwh" firstAttribute="top" secondItem="yN1-Yb-JYh" secondAttribute="top" id="dH4-3B-Vsw"/>
+                                    <constraint firstItem="eRl-9K-ium" firstAttribute="leading" secondItem="mx5-1o-Sx0" secondAttribute="trailing" constant="12" id="dz4-q6-6iF"/>
                                     <constraint firstItem="p4c-Kj-Vfs" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="137" id="ir9-1B-EmF"/>
                                     <constraint firstAttribute="trailing" secondItem="WIo-2o-SMH" secondAttribute="trailing" constant="26" id="ksT-lb-isY"/>
                                     <constraint firstItem="J8V-2F-Hce" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="mga-Pq-AvA"/>
                                     <constraint firstAttribute="trailing" secondItem="65i-jX-bwh" secondAttribute="trailing" id="qU6-wG-Thd"/>
-                                    <constraint firstItem="p2v-b6-kaz" firstAttribute="top" secondItem="WIo-2o-SMH" secondAttribute="bottom" constant="10" id="rff-8C-VBX"/>
                                     <constraint firstAttribute="trailing" secondItem="gai-Jr-rOz" secondAttribute="trailing" constant="26" id="u1o-iw-fHt"/>
                                     <constraint firstItem="WIo-2o-SMH" firstAttribute="leading" secondItem="yN1-Yb-JYh" secondAttribute="leading" constant="26" id="wYA-iL-ZSo"/>
                                     <constraint firstItem="J8V-2F-Hce" firstAttribute="top" secondItem="gai-Jr-rOz" secondAttribute="bottom" constant="27" id="wvA-61-gLJ"/>
@@ -195,7 +199,9 @@
                     <navigationItem key="navigationItem" id="gs9-lH-G5c"/>
                     <connections>
                         <outlet property="emailTextField" destination="krs-Pd-Ddz" id="Woi-pT-guV"/>
+                        <outlet property="loginButton" destination="cjT-dC-QhI" id="2WH-8l-Vxg"/>
                         <outlet property="passwordTextField" destination="J8V-2F-Hce" id="vHG-9o-hsD"/>
+                        <outlet property="registerButton" destination="XjC-Vp-9x4" id="l3r-SF-HGh"/>
                         <outlet property="rememberMeButton" destination="mx5-1o-Sx0" id="RG0-yd-lVn"/>
                     </connections>
                 </viewController>

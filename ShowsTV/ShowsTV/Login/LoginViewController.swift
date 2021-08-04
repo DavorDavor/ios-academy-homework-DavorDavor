@@ -15,6 +15,8 @@ class LoginViewController : UIViewController {
     @IBOutlet private weak var emailTextField: UITextField!
     @IBOutlet private weak var passwordTextField: UITextField!
     @IBOutlet private weak var rememberMeButton: UIButton!
+    @IBOutlet private weak var loginButton: UIButton!
+    @IBOutlet private weak var registerButton: UIButton!
     
     // MARK: - Properties
     
@@ -39,7 +41,7 @@ class LoginViewController : UIViewController {
     }
     
     // triggers login API call, pushes to Home on success
-    @IBAction private func loginOnClick(_ sender: Any) {
+    @IBAction private func loginOnClick(_ sender: UIButton) {
         
         // Check if fields empty
         guard
@@ -51,11 +53,16 @@ class LoginViewController : UIViewController {
             
             return
         }
+        
+        sender.pulse()
+        
         loginUserWith(email: emailTextField.text!, password: passwordTextField.text!)
     }
     
     // triggers register and login API call, pushes to Home on success
-    @IBAction private func registerOnClick(_ sender: Any) {
+    @IBAction private func registerOnClick(_ sender: UIButton) {
+        
+        sender.pulse()
         
         // Check if fields empty
         guard
@@ -160,6 +167,11 @@ private extension LoginViewController {
 // MARK: function to navigate to HomeViewController
 private extension LoginViewController {
     func navigateToHome(user:User, authInfo:AuthInfo) {
+        
+        if rememberMeButton.isSelected {
+            saveToUserDefaults(user: user, authInfo: authInfo)
+        }
+        
         let storyboard = UIStoryboard(name: "Home", bundle: nil)
 
         guard let homeViewController =         storyboard.instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else {return}
@@ -169,3 +181,18 @@ private extension LoginViewController {
     }
 }
 
+// MARK: function to save user defaults if RememberMe
+
+private extension LoginViewController {
+    func saveToUserDefaults (user: User, authInfo: AuthInfo){
+        // Save
+        let encoder = PropertyListEncoder()
+        if
+            let encodedUser = try? encoder.encode(user),
+            let encodedAuthInfo = try? encoder.encode(authInfo) {
+            UserDefaults.standard.set(encodedUser, forKey: Constants.UserDefaults.userKey)
+            UserDefaults.standard.set(encodedAuthInfo, forKey: Constants.UserDefaults.authInfoKey)
+        }
+        
+    }
+}
