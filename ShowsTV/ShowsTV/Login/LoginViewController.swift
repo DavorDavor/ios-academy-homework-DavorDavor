@@ -190,8 +190,8 @@ private extension LoginViewController {
         if
             let encodedUser = try? encoder.encode(user),
             let encodedAuthInfo = try? encoder.encode(authInfo) {
-            UserDefaults.standard.set(encodedUser, forKey: "user")
-            UserDefaults.standard.set(encodedAuthInfo, forKey: "authInfo")
+            UserDefaults.standard.set(encodedUser, forKey: Constants.UserDefaults.userKey)
+            UserDefaults.standard.set(encodedAuthInfo, forKey: Constants.UserDefaults.authInfoKey)
         }
         
     }

@@ -53,6 +53,7 @@ class ProfileDetailsViewController : UIViewController, UIImagePickerControllerDe
 
     // hide navigation bar
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
     }
 
@@ -77,8 +78,8 @@ class ProfileDetailsViewController : UIViewController, UIImagePickerControllerDe
                 name: NotificationLogoutInit,
                 object: nil
             )
-            UserDefaults.standard.removeObject(forKey: "user")
-            UserDefaults.standard.removeObject(forKey: "authInfo")
+            UserDefaults.standard.removeObject(forKey: Constants.UserDefaults.userKey)
+            UserDefaults.standard.removeObject(forKey: Constants.UserDefaults.authInfoKey)
             NotificationCenter.default.post(notification)
         })
     }

@@ -32,9 +32,7 @@ extension DetailsTableViewCell {
         descriptionLabel.text = show.description
         reviewInfoLabel.text = String(show.noOfReviews) + " REVIEWS, " + String(show.averageRating) + " AVERAGE"
         
-        guard let imageUrl = show.imageUrl else { return }
-        guard let imageUrl = URL(string: imageUrl) else {return}
-        showImageView.kf.setImage(with: imageUrl, placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
+        showImageView.kf.setImage(with: show.imageUrl, placeholder: UIImage(named: "ic-show-placeholder-rectangle"))
         
         ratingsView.setRoundedRating(show.averageRating)
         ratingsView.isEnabled = false

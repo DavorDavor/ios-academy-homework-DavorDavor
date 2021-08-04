@@ -27,6 +27,7 @@
 		42F20B5926B7273A00019042 /* ProfileDetails.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 42F20B5826B7273A00019042 /* ProfileDetails.storyboard */; };
 		42F20B5B26B7274A00019042 /* ProfileDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20B5A26B7274A00019042 /* ProfileDetailsViewController.swift */; };
 		42F20B5D26B992A300019042 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20B5C26B992A200019042 /* UIButtonExtensions.swift */; };
+		42F20B6626BA67AC00019042 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F20B6526BA67AC00019042 /* Constants.swift */; };
 		42F4877B26A80009000C039C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F4877A26A80009000C039C /* User.swift */; };
 		67CA1AB4CD9B53454495FD5D /* Pods_ShowsTV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3214BB3F346C8F9D011A6ADC /* Pods_ShowsTV.framework */; };
 /* End PBXBuildFile section */
@@ -55,6 +56,7 @@
 		42F20B5826B7273A00019042 /* ProfileDetails.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileDetails.storyboard; sourceTree = "<group>"; };
 		42F20B5A26B7274A00019042 /* ProfileDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDetailsViewController.swift; sourceTree = "<group>"; };
 		42F20B5C26B992A200019042 /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
+		42F20B6526BA67AC00019042 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		42F4877A26A80009000C039C /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		68A03677CBE3DA27AD55306E /* Pods-ShowsTV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsTV.release.xcconfig"; path = "Target Support Files/Pods-ShowsTV/Pods-ShowsTV.release.xcconfig"; sourceTree = "<group>"; };
 		D2EA53DC471030FA9422975B /* Pods-ShowsTV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShowsTV.debug.xcconfig"; path = "Target Support Files/Pods-ShowsTV/Pods-ShowsTV.debug.xcconfig"; sourceTree = "<group>"; };
@@ -149,6 +151,7 @@
 				42BDD2E2269EC49000501E11 /* LaunchScreen.storyboard */,
 				42BDD2E5269EC49000501E11 /* Info.plist */,
 				42F20B5C26B992A200019042 /* UIButtonExtensions.swift */,
+				42F20B6526BA67AC00019042 /* Constants.swift */,
 			);
 			path = ShowsTV;
 			sourceTree = "<group>";
@@ -315,6 +318,7 @@
 				42BB25D126B12A120079A886 /* DetailsTableViewCell.swift in Sources */,
 				42F20B5B26B7274A00019042 /* ProfileDetailsViewController.swift in Sources */,
 				42BB25CE26B126E40079A886 /* Review.swift in Sources */,
+				42F20B6626BA67AC00019042 /* Constants.swift in Sources */,
 				42BDD2D8269EC48E00501E11 /* AppDelegate.swift in Sources */,
 				424B39C026B1B7B1003E16B8 /* ReviewViewController.swift in Sources */,
 				42BB25CC26B126390079A886 /* RatingView.swift in Sources */,

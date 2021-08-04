@@ -20,8 +20,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Restore user and authInfo
         let decoder = PropertyListDecoder()
         if
-            let userData = UserDefaults.standard.data(forKey: "user"),
-            let authInfoData = UserDefaults.standard.data(forKey: "authInfo"),
+            let userData = UserDefaults.standard.data(forKey: Constants.UserDefaults.userKey),
+            let authInfoData = UserDefaults.standard.data(forKey: Constants.UserDefaults.authInfoKey),
             let decodedUser = try? decoder.decode(User.self, from: userData),
             let decodedAuthInfo = try? decoder.decode(AuthInfo.self, from: authInfoData)
         {
